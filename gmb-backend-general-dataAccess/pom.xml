@@ -7,6 +7,7 @@
   </parent>
   <groupId>com.gmbestablished.gmb-backend-general-dataAccess</groupId>
   <artifactId>gmb-backend-general-dataAccess</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
   <name>gmb-backend-general-dataAccess</name>
  <dependencies>
 		<dependency>
