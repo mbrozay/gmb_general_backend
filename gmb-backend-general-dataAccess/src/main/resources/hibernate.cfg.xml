@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <!-- <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+                    <property name="connection.url">jdbc:hsqldb:hsql://localhost/TestDB</property> -->
+
+     <!--  <property name="connection.driver_class">org.hibernate.dialect.MySQLInnoDBDialect</property> -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/gmb_general_backend</property>
+        <property name="connection.username">gmbgb</property>
+        <property name="connection.password">OYijwcWgV2L2PzXbC21Bmzlapeqzjey8</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">
+            org.hibernate.dialect.MySQLInnoDBDialect
+        </property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+    <!--    <property name="cache.use_query_cache">true</property>
+        <property name="cache.use_second_level_cache">true</property>
+        <property name="cache.use_structured_entries">true</property>
+        <property name="cache.region.factory_class">org.hibernate.cache.EhCacheRegionFactory</property>
+        <property name="net.sf.ehcache.configurationResourceName">/hibernate-config/ehcache.xml</property> -->
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+    <!--  -->
+        
+       
+        <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.Address"/>
+        <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.Category"/>
+        <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.Category_Entity_Association"/>
+        <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.Entity_Primary"/>
+        <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.SessionToken"/>
+        <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.User"/>
+        <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.UserGroup"/>
+        <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.User_UserGroup_Membership"/>
+
+    </session-factory>
+
+</hibernate-configuration>
