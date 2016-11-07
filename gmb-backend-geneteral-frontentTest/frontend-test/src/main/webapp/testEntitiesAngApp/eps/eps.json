@@ -1,0 +1,27 @@
+[ 
+	{ 
+		"id" : 1, 
+		"name" : "Limerick Vet 1", 
+		"description" : "Best vet in Limerick" 
+	},	
+ 	{ 
+ 		"id" : 2, 
+ 		"name" : "Cork Vet 1", 
+ 		"description" : "Best vet in Cork" 
+ 	},  	
+  	{ 
+  		"id" : 3, 
+  		"name" : "Dublin Vet 1", 
+  		"description" : "Best vet in Dublin" 
+  	},  	
+   	{ 
+   		"id" : 4, 
+   		"name" : "Limerick Chiro 1", 
+   		"description" : "Best Chiro in Limerick" 
+   	},
+    { 
+    	"id" : 5, 
+    	"name" : "Cork Chiro", 
+    	"description" : "Best Chiro in Cork" 
+    } 
+]

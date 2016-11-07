@@ -1,29 +1,9 @@
-package com.gmbestablished.gmb_backend_general_dataAccess.model;
+package com.gmbestablished.gmb_backend_general_rest.pojo;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OrderBy;
-import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-@Entity
-@Table
-public class Address {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+public class AddressPojo {
 	private Long id;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="entityPrimaryId")
-	@JsonBackReference
-	private EntityPrimary entityPrimary;
+	private Long entityPrimaryId;
 	private String addressLine1;
 	private String addressLine2;
 	private String addressLine3;
@@ -38,11 +18,11 @@ public class Address {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public EntityPrimary getEntityPrimary() {
-		return entityPrimary;
+	public Long getEntityPrimaryId() {
+		return entityPrimaryId;
 	}
-	public void setEntityPrimary(EntityPrimary entityPrimary) {
-		this.entityPrimary = entityPrimary;
+	public void setEntityPrimaryId(Long entityPrimaryId) {
+		this.entityPrimaryId = entityPrimaryId;
 	}
 	public String getAddressLine1() {
 		return addressLine1;
@@ -94,5 +74,4 @@ public class Address {
 	}
 	
 	
-
 }

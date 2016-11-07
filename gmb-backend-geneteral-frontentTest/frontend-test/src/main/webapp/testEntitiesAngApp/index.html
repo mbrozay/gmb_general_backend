@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" ng-app="gmbcatApp">
+  <head>
+    <meta charset="utf-8">
+    <title>GMB Primary Entities</title>
+ <!--   <link rel="stylesheet" href="css/bootstrap.css" /> --> 
+    <link rel="stylesheet" href="app.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+	<script src="app.module.js"></script>
+		<script src="ep-list/ep-list.module.js"></script>
+	<script src="ep-list/ep-list.component.js"></script>
+
+  </head>
+  <body>
+  <div class="header-advert">
+  
+<img src="http://localhost:8080/images/chess-utopia-1770372_640.jpg" alt="Advertise Here" >
+<h1>Advertise <br>
+Here</h1>
+</div>
+<div class="navbar">
+<!-- <a href="#"> -->
+<img class="navlogo" src="http://localhost:8080/images/EquineHealthLogo.png">
+<!-- </a> -->
+<h3><a href="#">Home</a>
+<a href="#">Register</a>
+<a href="#">Contact Us</a></h3>
+</div>
+
+<div>
+
+     <ep-list></ep-list>
+</div>
+  </body>
+</html>

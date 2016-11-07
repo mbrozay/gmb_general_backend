@@ -42,7 +42,7 @@
         <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.Address"/>
         <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.Category"/>
         <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.Category_Entity_Association"/>
-        <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.Entity_Primary"/>
+        <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.EntityPrimary"/>
         <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.SessionToken"/>
         <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.User"/>
         <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.UserGroup"/>

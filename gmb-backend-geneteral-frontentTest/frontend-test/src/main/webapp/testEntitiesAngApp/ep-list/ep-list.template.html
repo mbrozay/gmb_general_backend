@@ -1,0 +1,26 @@
+<div class="ep-list-template">
+<div class="main-image">
+<img src="http://localhost:8080/images/horses-in-sea-cropped.jpg">
+<span> <h1> Search: <input ng-model="$ctrl.query" />
+</div>
+
+
+
+      <p>
+        Sort by:
+        <select ng-model="$ctrl.orderProp">
+          <option value="name">Alphabetical</option>
+          <option value="id">Newest</option>
+        </select>
+      </p>
+
+
+
+
+      <ul>
+        <li ng-repeat="ep in $ctrl.eps | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+          <span>{{ep.name}}</span>
+          <p>{{ep.id}}</p>
+        </li>
+      </ul>
+</div>

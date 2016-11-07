@@ -1,0 +1,33 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+
+       <p>
+        Search:
+        <input ng-model="$ctrl.query" />
+      </p>
+
+      <p>
+        Sort by:
+        <select ng-model="$ctrl.orderProp">
+          <option value="name">Alphabetical</option>
+          <option value="id">Newest</option>
+        </select>
+      </p>
+
+
+    </div>
+    <div class="col-md-10">
+      <!--Body content-->
+
+      <ul class="phones">
+        <li ng-repeat="ep in $ctrl.eps | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+          <span>{{ep.name}}</span>
+          <p>{{ep.id}}</p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
