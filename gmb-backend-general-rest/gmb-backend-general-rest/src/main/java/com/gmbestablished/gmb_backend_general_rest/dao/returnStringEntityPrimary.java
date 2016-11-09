@@ -27,6 +27,7 @@ public class returnStringEntityPrimary {
 		List<EntityPrimary> allEntityPrimary = (ArrayList<EntityPrimary>) query.list();
 		System.out.println("Size of list result is " + allEntityPrimary.size());
 		System.out.println(allEntityPrimary.get(0).getAddress().get(0).getAddressLine1());
+		System.out.println(allEntityPrimary.get(0).getCategory().get(0).getDescription());
 		
 		
 		ObjectMapper mapper = new ObjectMapper();

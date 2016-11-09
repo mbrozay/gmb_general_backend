@@ -8,9 +8,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -24,6 +28,9 @@ public class EntityPrimary {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="entityPrimary")
 	@JsonManagedReference
 	private List<Address> address = new ArrayList<Address>();
+	@ManyToMany(mappedBy="entityPrimary")
+	@JsonManagedReference
+	private List<Category> category = new ArrayList<Category>();
 	
 	
 	public Long getId() {
@@ -49,6 +56,12 @@ public class EntityPrimary {
 	}
 	public void setAddress(List<Address> address) {
 		this.address = address;
+	}
+	public List<Category> getCategory() {
+		return category;
+	}
+	public void setCategory(List<Category> category) {
+		this.category = category;
 	}
 
 		

@@ -17,10 +17,17 @@
 
 
 
-      <ul>
-        <li ng-repeat="ep in $ctrl.eps | filter:$ctrl.query | orderBy:$ctrl.orderProp">
-          <span>{{ep.name}}</span>
-          <p>{{ep.id}}</p>
-        </li>
-      </ul>
+      
+        <div ng-repeat="ep in $ctrl.eps | filter:$ctrl.query | orderBy:$ctrl.orderProp" style="display:inline">
+        <div style="display:inline"><strong>{{ep.name}} </strong> <br></div>
+          <div ng-repeat="addr in ep.address | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+        {{addr.addressLine1}}</br>
+          {{addr.addressLine2}}</br>
+           {{addr.city}}</br><br>
+           <div ng-repeat="cat in ep.category | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+        {{cat.name}}</br>
+           
+         
+        </div>
+      
 </div>
