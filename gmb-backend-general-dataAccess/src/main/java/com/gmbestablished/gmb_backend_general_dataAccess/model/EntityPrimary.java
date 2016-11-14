@@ -8,13 +8,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -31,6 +27,9 @@ public class EntityPrimary {
 	@ManyToMany(mappedBy="entityPrimary")
 	@JsonManagedReference
 	private List<Category> category = new ArrayList<Category>();
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy="entityPrimary")
+	@JsonManagedReference
+	private List<Metadata> metadata = new ArrayList<Metadata>();
 	
 	
 	public Long getId() {
@@ -63,6 +62,13 @@ public class EntityPrimary {
 	public void setCategory(List<Category> category) {
 		this.category = category;
 	}
+	public List<Metadata> getMetadata() {
+		return metadata;
+	}
+	public void setMetadata(List<Metadata> metadata) {
+		this.metadata = metadata;
+	}
+	
 
 		
 }

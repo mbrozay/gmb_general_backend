@@ -39,4 +39,11 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/main/webapp/testPhonesAngApp/img</name>
+			<type>2</type>
+			<locationURI>PARENT-4-PROJECT_LOC/Users/User/Downloads/angular-phonecat-master%20(1)/angular-phonecat-master/app/img</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
