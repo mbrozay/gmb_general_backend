@@ -14,8 +14,8 @@ angular.
   	  }
   	  ]*/
     
-    controller: ['EpIndividual',
-	               function EPListController(EpIndividual) {
+    controller: ['$routeParams','EpIndividual',
+	               function EPListController($routeParams,EpIndividual) {
     	 var self = this;
     	
     	/*var handleSuccess = function(data, status, headers, config) {
@@ -29,7 +29,7 @@ angular.
     	 var jsondata = {
     	            "id" : "1"
     	    };
-    		var jsondataStringify = JSON.stringify(jsondata);
+    		var jsondataStringify = JSON.stringify($routeParams);
     	 self.eps=EpIndividual.save(jsondataStringify);
 		  
 	  }

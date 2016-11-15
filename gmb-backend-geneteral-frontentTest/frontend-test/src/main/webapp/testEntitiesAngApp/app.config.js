@@ -10,7 +10,7 @@ angular.
         when('/eps', {
           template: '<ep-list></ep-list>'
         }).
-        when('/eps/:epId', {
+        when('/eps/:id', {
           template: '<ep-detail></ep-detail>'
         }).
         otherwise('/eps');
