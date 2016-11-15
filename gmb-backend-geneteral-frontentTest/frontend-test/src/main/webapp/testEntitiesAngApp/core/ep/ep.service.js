@@ -35,7 +35,18 @@ factory('EpIndividual', ['$resource','$http',
             "id" : "1"
     };
 	var jsondataStringify = JSON.stringify(jsondata);
-	var response = $http.post('http://localhost:8080/gmb-backend-general-rest/epPicker', jsondataStringify);
+/*	var response = $http.post('http://localhost:8080/gmb-backend-general-rest/epPicker', jsondataStringify);
+	return response;*/
+	var response = $resource('http://localhost:8080/gmb-backend-general-rest/epPicker', {}, {
+        save: {
+          method: 'POST',
+          accept: "application/json",
+          contentType: "application/json",
+           params: jsondataStringify,
+          isArray: true
+        }
+	
+	})
 	return response;
 	}
 	

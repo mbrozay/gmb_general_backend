@@ -18,14 +18,19 @@ angular.
 	               function EPListController(EpIndividual) {
     	 var self = this;
     	
-    	var handleSuccess = function(data, status, headers, config) {
+    	/*var handleSuccess = function(data, status, headers, config) {
            self.eps = data;
         };
         var handleError = function(data, status, headers, config) {
         	alert( "Exception details: " + JSON.stringify({data: data}));
-        };
+        };*/
     	
-		 EpIndividual.success(handleSuccess);
+	//	 EpIndividual.success(handleSuccess);
+    	 var jsondata = {
+    	            "id" : "1"
+    	    };
+    		var jsondataStringify = JSON.stringify(jsondata);
+    	 self.eps=EpIndividual.save(jsondataStringify);
 		  
 	  }
 	  ]
