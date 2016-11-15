@@ -2,5 +2,6 @@
 
 // Define the `phoneDetail` module
 angular.module('epDetail', [
-  'ngRoute'
+  'ngRoute',
+  'core.ep'
 ]);

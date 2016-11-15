@@ -2,6 +2,7 @@ package com.gmbestablished.gmb_backend_general_rest.controller;
 
 import java.io.IOException;
 import java.util.List;
+
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +17,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
+import com.gmbestablished.gmb_backend_general_rest.dao.EpPicker;
 import com.gmbestablished.gmb_backend_general_rest.dao.returnStringEntityPrimary;
+import com.gmbestablished.gmb_backend_general_rest.pojo.EpPicker_pojo;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -45,6 +48,18 @@ public class Controller {
 		
 		return stringRsep;
 		
+	}
+	
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/epPicker", method = RequestMethod.POST)	
+	public  @ResponseBody String epPicker_JSON( @RequestBody EpPicker_pojo epPicker_pojo ) throws JsonProcessingException   {		
+		
+		EpPicker epPicker = new EpPicker();
+		String result = epPicker.epPick(epPicker_pojo);
+//		epPicker_pojo.setResponse(result);
+		System.out.println("returning eppicker");
+		return result;
 	}
 
 }

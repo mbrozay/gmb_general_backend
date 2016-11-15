@@ -5,9 +5,29 @@ angular.
   module('epDetail').
   component('epDetail', {
     templateUrl: 'ep-detail/ep-detail.template.html',
-    controller: ['$routeParams',
-      function EpDetailController($routeParams) {
-        this.epId = $routeParams.epId;
-      }
-    ]
+   
+        
+  /*      controller: ['EpIndividual',
+  	               function EPDetailController(EpIndividual) {
+  		  this.eps = EpIndividual.query();
+  		  this.orderProp = 'age';
+  	  }
+  	  ]*/
+    
+    controller: ['EpIndividual',
+	               function EPListController(EpIndividual) {
+    	 var self = this;
+    	
+    	var handleSuccess = function(data, status, headers, config) {
+           self.eps = data;
+        };
+        var handleError = function(data, status, headers, config) {
+        	alert( "Exception details: " + JSON.stringify({data: data}));
+        };
+    	
+		 EpIndividual.success(handleSuccess);
+		  
+	  }
+	  ]
+
   });

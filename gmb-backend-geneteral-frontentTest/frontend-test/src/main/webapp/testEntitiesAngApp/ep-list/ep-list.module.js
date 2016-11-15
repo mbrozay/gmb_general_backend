@@ -1,4 +1,4 @@
 'use strict';
 
 // Define the `epList` module
-angular.module('epList', []);
+angular.module('epList', ['core.ep']);
