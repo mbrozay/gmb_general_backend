@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import com.gmbestablished.gmb_backend_general_dataAccess.model.Address;
+import com.gmbestablished.gmb_backend_general_dataAccess.model.Category;
 
 public class EntityPrimaryPojo {
 	
@@ -11,6 +12,14 @@ public class EntityPrimaryPojo {
 	private String name;
 	private String description;
 	private ArrayList<Address> address = new ArrayList<Address>();
+	private ArrayList<Category> categories = new ArrayList<Category>();
+	private String logo;
+	private String aboutUs;
+	private String servicesBlurb;
+	private ArrayList<Service> services = new ArrayList<Service>();
+	
+	
+	
 	public Long getId() {
 		return id;
 	}

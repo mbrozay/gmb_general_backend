@@ -45,7 +45,6 @@
         <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.SessionToken"/>
         <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.User"/>
         <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.UserGroup"/>
-        <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.User_UserGroup_Membership"/>
         <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.Metadata"/>
         <mapping class = "com.gmbestablished.gmb_backend_general_dataAccess.model.Metadatatype"/>
 

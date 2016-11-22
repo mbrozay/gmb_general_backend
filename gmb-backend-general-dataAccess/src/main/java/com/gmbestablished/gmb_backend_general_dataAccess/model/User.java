@@ -1,21 +1,31 @@
 package com.gmbestablished.gmb_backend_general_dataAccess.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table
 public class User {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private String firstName;
 	private String lastName;
 	private String username;
 	private String password;
+	@ManyToMany(mappedBy="user")
+	@JsonBackReference
+	private List<EntityPrimary> entityPrimary = new ArrayList<EntityPrimary>();
 	
 	public Long getId() {
 		return id;
@@ -46,6 +56,12 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public List<EntityPrimary> getEntityPrimary() {
+		return entityPrimary;
+	}
+	public void setEntityPrimary(List<EntityPrimary> entityPrimary) {
+		this.entityPrimary = entityPrimary;
 	}
 	
 	

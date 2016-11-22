@@ -3,14 +3,19 @@ package com.gmbestablished.gmb_backend_general_dataAccess.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -21,15 +26,24 @@ public class EntityPrimary {
 	private Long id;
 	private String name;
 	private String description;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy="entityPrimary")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="entityPrimary", cascade=CascadeType.ALL)
 	@JsonManagedReference
 	private List<Address> address = new ArrayList<Address>();
-	@ManyToMany(mappedBy="entityPrimary")
+	@ManyToMany
+	@JoinTable(name = "category_entityPrimary_association", joinColumns = {
+	@JoinColumn(name = "entityId") },
+	inverseJoinColumns = { @JoinColumn(name = "categoryId")})
 	@JsonManagedReference
 	private List<Category> category = new ArrayList<Category>();
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy="entityPrimary")
 	@JsonManagedReference
 	private List<Metadata> metadata = new ArrayList<Metadata>();
+	@ManyToMany
+	@JoinTable(name = "entityprimary_user_association", joinColumns = {
+	@JoinColumn(name = "entityPrimaryId") },
+	inverseJoinColumns = { @JoinColumn(name = "userId")})
+	@JsonManagedReference
+	private List <User> user = new ArrayList<User>();
 	
 	
 	public Long getId() {
@@ -68,7 +82,10 @@ public class EntityPrimary {
 	public void setMetadata(List<Metadata> metadata) {
 		this.metadata = metadata;
 	}
-	
-
-		
+	public List<User> getUser() {
+		return user;
+	}
+	public void setUser(List<User> user) {
+		this.user = user;
+	}	
 }

@@ -1,3 +1,5 @@
+  <a href="#!/register">Signup</a> <br>
+
   <span ng-click="myFilter = 'vet'">Vet</span> | 
   <span ng-click="myFilter = 'chiro'">Chiro</span> |
   <span ng-click="myFilter = null">No filter</span>
@@ -18,7 +20,7 @@
           <option value="id">Newest</option>
         </select>
       </p>
-        <div ng-repeat="ep in $ctrl.eps | filter:$ctrl.query | filter:myFilter | orderBy:$ctrl.orderProp" >
+        <div ng-repeat="ep in $ctrl.eps | filter:$ctrl.query | filter:myFilter   |  orderBy:$ctrl.orderProp" >
              <div><strong>{{ep.name}} </strong> <br></div>
           <div ng-repeat="addr in ep.address " >
         {{addr.addressLine1}}</br>
@@ -26,11 +28,9 @@
            {{addr.city}}</br><br>
            <div ng-repeat="cat in ep.category " >
         {{cat.name}}</br>
-        <div ng-repeat="md in ep.metadata " >
+        <div ng-repeat="md in ep.metadata | filter:{id: 1}:true " >
         <a href="#!/eps/{{ep.id}}" class = "thumbnail">
-        	<img ng-src="{{md.metaDataValue}}" alt="{{ep.name}}" />
-        	
-
+        	<img ng-src="{{md.metaDataValue}}" alt="{{ep.name}}" /> </a>
 </div>      
 </div>
 

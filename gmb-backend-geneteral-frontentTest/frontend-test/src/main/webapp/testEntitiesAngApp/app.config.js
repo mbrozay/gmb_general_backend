@@ -10,6 +10,9 @@ angular.
         when('/eps', {
           template: '<ep-list></ep-list>'
         }).
+        when('/register', {
+            template: '<ep-register></ep-register>'
+          }).
         when('/eps/:id', {
           template: '<ep-detail></ep-detail>'
         }).
