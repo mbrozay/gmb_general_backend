@@ -1,14 +1,19 @@
 <strong>Register Page</strong> <br>
 
- <input type="text" ng-model="$ctrl.firstName"> <br>
-  <input type="text" ng-model="$ctrl.lastName"> <br>
-  <button ng-click="$ctrl.makeJson()">Register</button>
-<br>
 <div>
 {{$ctrl.firstName}}<br>
 {{$ctrl.lastName}}<br>
 
 </div>
+<form name="signupForm" ng-submit="$ctrl.submit()">
+First Name: <input type="text" ng-model="$ctrl.firstName"> <br>
+Last Name:  <input type="text" ng-model="$ctrl.lastName"> <br>
+Service Title 1 :  <input type="text" ng-model="$ctrl.services.serviceTitle1"> <br>
+Service Blurb 1:  <input type="text" ng-model="$ctrl.services.serviceBlurb1"> <br>
+Service Title 2 :  <input type="text" ng-model="$ctrl.services.serviceTitle2"> <br>
+Service Blurb 2:  <input type="text" ng-model="$ctrl.services.serviceBlurb2"> <br>
+  <button type="submit">Sign up</button>
+</form>
 
 
 
