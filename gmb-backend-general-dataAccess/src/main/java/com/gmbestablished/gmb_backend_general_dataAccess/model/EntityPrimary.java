@@ -38,11 +38,8 @@ public class EntityPrimary {
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy="entityPrimary")
 	@JsonManagedReference
 	private List<Metadata> metadata = new ArrayList<Metadata>();
-	@ManyToMany
-	@JoinTable(name = "entityprimary_user_association", joinColumns = {
-	@JoinColumn(name = "entityPrimaryId") },
-	inverseJoinColumns = { @JoinColumn(name = "userId")})
-	@JsonManagedReference
+	@ManyToMany(mappedBy="entityPrimary")
+	@JsonBackReference
 	private List <User> user = new ArrayList<User>();
 	
 	

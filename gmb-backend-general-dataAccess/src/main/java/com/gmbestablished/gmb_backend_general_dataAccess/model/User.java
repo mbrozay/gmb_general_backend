@@ -7,10 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table
@@ -23,8 +26,11 @@ public class User {
 	private String lastName;
 	private String username;
 	private String password;
-	@ManyToMany(mappedBy="user")
-	@JsonBackReference
+	@ManyToMany
+	@JoinTable(name = "entityprimary_user_association", joinColumns = {
+	@JoinColumn(name = "userId") },
+	inverseJoinColumns = { @JoinColumn(name = "entityPrimaryId")})
+	@JsonManagedReference
 	private List<EntityPrimary> entityPrimary = new ArrayList<EntityPrimary>();
 	
 	public Long getId() {

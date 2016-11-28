@@ -1,19 +1,51 @@
+
 <strong>Register Page</strong> <br>
-
-<div>
-{{$ctrl.firstName}}<br>
-{{$ctrl.lastName}}<br>
-
+{{$ctrl.user.firstName}}<br>
+Category: 
+<div ng-repeat="category in $ctrl.categories" >
+{{category.id}} {{category.name}} 
+</div>
+<div ng-repeat="response in $ctrl.responses" >
 </div>
 <form name="signupForm" ng-submit="$ctrl.submit()">
-First Name: <input type="text" ng-model="$ctrl.firstName"> <br>
-Last Name:  <input type="text" ng-model="$ctrl.lastName"> <br>
-Service Title 1 :  <input type="text" ng-model="$ctrl.services.serviceTitle1"> <br>
-Service Blurb 1:  <input type="text" ng-model="$ctrl.services.serviceBlurb1"> <br>
-Service Title 2 :  <input type="text" ng-model="$ctrl.services.serviceTitle2"> <br>
-Service Blurb 2:  <input type="text" ng-model="$ctrl.services.serviceBlurb2"> <br>
-  <button type="submit">Sign up</button>
+First Name: <input type="text" ng-model="$ctrl.user.firstName"> <br>
+Last Name:  <input type="text" ng-model="$ctrl.user.lastName"> <br>
+Company Name: <input type="text" ng-model="$ctrl.name">
+Company Description: <input type="text" ng-model="$ctrl.description">
+Address Line 1 : <input type="text" ng-model="$ctrl.address.addressLine1">
+Address Line 2 : <input type="text" ng-model="$ctrl.address.addressLine2">
+Address Line 3 : <input type="text" ng-model="$ctrl.address.addressLine3">
+City : <input type="text" ng-model="$ctrl.address.city">
+County : <input type="text" ng-model="$ctrl.address.county">
+Country : <input type="text" ng-model="$ctrl.address.country">
+Post Code: <input type="text" ng-model="$ctrl.address.postcode">
+Category: [Combobox]
+About Us :  <input type="text" ng-model="$ctrl.aboutUs"> <br>
+Service Title 1 :  <input type="text" ng-model="$ctrl.services.serviceBlockTitle1"> <br>
+Service Blurb 1:  <input type="text" ng-model="$ctrl.services.serviceBlockBody1"> <br>
+Service Title 2 :  <input type="text" ng-model="$ctrl.services.serviceBlockTitle2"> <br>
+Service Blurb 2:  <input type="text" ng-model="$ctrl.services.serviceBlockBody2"> <br>
+Service Title 3 :  <input type="text" ng-model="$ctrl.services.serviceBlockTitle3"> <br>
+Service Blurb 3 :  <input type="text" ng-model="$ctrl.services.serviceBlockBody3"> <br>
+Testimonial 1 - From : <input type="text" ng-model="$ctrl.testimonials.testimonialFromName1"> <br>
+Testimonial 1 - Body : <input type="text" ng-model="$ctrl.testimonials.testimonialBody1"> <br>
+Testimonial 1 - Url : <input type="text" ng-model="$ctrl.testimonials.testimonialFromURL1"> <br>
+Testimonial 2 - From : <input type="text" ng-model="$ctrl.testimonials.testimonialFromName2"> <br>
+Testimonial 2 - Body : <input type="text" ng-model="$ctrl.testimonials.testimonialBody2"> <br>
+Testimonial 2 - Url : <input type="text" ng-model="$ctrl.testimonials.testimonialFromURL2"> <br>
+Username:  <input type="text" ng-model="$ctrl.user.username">
+Password:  <input type="text" ng-model="$ctrl.user.password">
+  <button type="submit">Sign up</button><br>
 </form>
+<strong> single </strong>
+ {{$ctrl.response.response}} <br>
+ <strong>ng-repeat</strong><br>
+ <div ng-repeat="resp in $ctrl.response" >
+{{resp.response}}
+</div>
+
+
+
 
 
 

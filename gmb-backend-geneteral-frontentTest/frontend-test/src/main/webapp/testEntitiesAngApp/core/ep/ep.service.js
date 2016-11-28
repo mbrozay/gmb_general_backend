@@ -8,7 +8,6 @@ angular.
 	  return $resource('http://localhost:8080/gmb-backend-general-rest/entitySelector', {}, {
 		          query: {
 		            method: 'GET',
-		//            params: {epId: 'eps'},
 		            isArray: true
 		          }
   });
@@ -17,36 +16,49 @@ angular.
 
 angular.
 module('core.ep').
-factory('EpIndividual', ['$resource','$http',
+factory('EpCategories', ['$resource','$http',
   function($resource,$http) {
     
-/*	var jsondata = {"id" : "3"};
-	var jsondataStringify = JSON.stringify(jsondata);
-	 return $resource('http://localhost:8080/gmb-backend-general-rest/epPicker', jsondataStringify, {
-         update: {
-           method: 'POST',
-           accept: "application/json",
-           contentType: "application/json",
-            params: {"id": '2'},
-           isArray: true
-         }
-});*/
-	var jsondata = {
-            "id" : "1"
-    };
-	var jsondataStringify = JSON.stringify(jsondata);
-/*	var response = $http.post('http://localhost:8080/gmb-backend-general-rest/epPicker', jsondataStringify);
-	return response;*/
+	  return $resource('http://localhost:8080/gmb-backend-general-rest/categories', {}, {
+		          query: {
+		            method: 'GET',
+		            isArray: true
+		          }
+});
+}
+]);
+
+angular.
+module('core.ep').
+factory('EpIndividual', ['$resource','$http',
+  function($resource,$http) {
 	var response = $resource('http://localhost:8080/gmb-backend-general-rest/epPicker', {}, {
         save: {
           method: 'POST',
           accept: "application/json",
           contentType: "application/json",
-           params: jsondataStringify,
           isArray: true
-        }
-	
+        }	
 	})
+	return response;
+	}
+	
+
+]);
+
+angular.
+module('core.ep').
+factory('EpRegister', ['$resource','$http',
+  function($resource,$http) {
+	var response = $resource('http://localhost:8080/gmb-backend-general-rest/epRegister', {}, {
+        save: {
+          method: 'POST',
+          accept: "application/json",
+          contentType: "application/json",
+          isArray: true
+        }	
+	})
+        
 	return response;
 	}
 	

@@ -27,6 +27,7 @@ public class Address {
 	private String addressLine2;
 	private String addressLine3;
 	private String city;
+	private String county;
 	private String country;
 	private String postCode;
 	private String latitudeCoordinate;
@@ -66,6 +67,12 @@ public class Address {
 	}
 	public void setCity(String city) {
 		this.city = city;
+	}
+	public String getCounty() {
+		return county;
+	}
+	public void setCounty(String county) {
+		this.county = county;
 	}
 	public String getCountry() {
 		return country;

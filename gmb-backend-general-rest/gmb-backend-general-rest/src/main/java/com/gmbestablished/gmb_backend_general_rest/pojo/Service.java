@@ -3,8 +3,8 @@ package com.gmbestablished.gmb_backend_general_rest.pojo;
 public class Service {
 
 	private long id;
-	private String serviceBlockHeading;
-	private String serviceBlockText;
+	private String serviceBlockTitle;
+	private String serviceBlockBody;
 	
 	public long getId() {
 		return id;
@@ -12,16 +12,16 @@ public class Service {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public String getServiceBlockHeading() {
-		return serviceBlockHeading;
+	public String getServiceBlockTitle() {
+		return serviceBlockTitle;
 	}
-	public void setServiceBlockHeading(String serviceBlockHeading) {
-		this.serviceBlockHeading = serviceBlockHeading;
+	public void setServiceBlockTitle(String serviceBlockTitle) {
+		this.serviceBlockTitle = serviceBlockTitle;
 	}
-	public String getServiceBlockText() {
-		return serviceBlockText;
+	public String getServiceBlockBody() {
+		return serviceBlockBody;
 	}
-	public void setServiceBlockText(String serviceBlockText) {
-		this.serviceBlockText = serviceBlockText;
+	public void setServiceBlockBody(String serviceBlockBody) {
+		this.serviceBlockBody = serviceBlockBody;
 	}
 }

@@ -10,16 +10,15 @@ public class EntityPrimaryPojo {
 	
 	private Long id;
 	private String name;
-	private String description;
-	private ArrayList<Address> address = new ArrayList<Address>();
+		private String description;
+		/*		private ArrayList<Address> address = new ArrayList<Address>();
 	private ArrayList<Category> categories = new ArrayList<Category>();
 	private String logo;
 	private String aboutUs;
-	private String servicesBlurb;
-	private ArrayList<Service> services = new ArrayList<Service>();
-	
-	
-	
+	private String servicesBlurb; */
+	private ArrayList<Service> services = new ArrayList<Service>(); 
+	private String response;
+
 	public Long getId() {
 		return id;
 	}
@@ -38,11 +37,22 @@ public class EntityPrimaryPojo {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public ArrayList<Address> getAddress() {
+	/*	public ArrayList<Address> getAddress() {
 		return address;
 	}
 	public void setAddress(ArrayList<Address> address) {
 		this.address = address;
+	} */
+	public ArrayList<Service> getServices() {
+		return services;
 	}
-
+	public void setServices(ArrayList<Service> services) {
+		this.services = services; 
+	}
+	public String getResponse() {
+		return response;
+	}
+	public void setResponse(String response) {
+		this.response = response;
+	}
 }
