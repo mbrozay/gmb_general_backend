@@ -58,6 +58,7 @@ angular.
     	//		"user" : ctrl.userArray,
     			"name" : ctrl.name,
     			"description" : ctrl.description,
+    			"category" : ctrl.selectedCategory,
     	//		"address" : ctrl.addressArray,
     	//		"aboutUs" : ctrl.aboutUs,
     	//		"services" 	: ctrl.serivceArray,
@@ -67,9 +68,9 @@ angular.
     	var jsondataStringify = JSON.stringify(registerData);
     //	ctrl.responses=EpRegister.save(jsondataStringify);
     	EpRegister.save(jsondataStringify,function(data){
-    		ctrl.response = data;
+    		ctrl.message = data;
     	}, function(error) {
-    	    ctrl.response = "error";
+    	    ctrl.message = "error";
     	}
     			)
     }           

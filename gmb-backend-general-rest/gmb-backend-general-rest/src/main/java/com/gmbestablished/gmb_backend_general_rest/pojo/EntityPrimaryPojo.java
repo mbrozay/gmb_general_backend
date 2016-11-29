@@ -11,8 +11,9 @@ public class EntityPrimaryPojo {
 	private Long id;
 	private String name;
 		private String description;
+		private String category;
 		/*		private ArrayList<Address> address = new ArrayList<Address>();
-	private ArrayList<Category> categories = new ArrayList<Category>();
+	
 	private String logo;
 	private String aboutUs;
 	private String servicesBlurb; */
@@ -36,6 +37,12 @@ public class EntityPrimaryPojo {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	/*	public ArrayList<Address> getAddress() {
 		return address;

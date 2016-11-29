@@ -50,8 +50,7 @@ public class Controller {
 	public String allCategories() throws JsonProcessingException{
 		ReturnCategories rc =new ReturnCategories();
 		String stringRc = rc.categories();
-		return stringRc;
-		
+		return stringRc;	
 	}
 	
 	@RequestMapping("/entitySelectorWithAddress")
