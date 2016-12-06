@@ -3,11 +3,11 @@ package com.gmbestablished.gmb_backend_general_rest.pojo;
 
 public class AddressPojo {
 	private Long id;
-	private Long entityPrimaryId;
 	private String addressLine1;
 	private String addressLine2;
 	private String addressLine3;
 	private String city;
+	private String county;
 	private String country;
 	private String postCode;
 	private String latitudeCoordinate;
@@ -17,12 +17,6 @@ public class AddressPojo {
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public Long getEntityPrimaryId() {
-		return entityPrimaryId;
-	}
-	public void setEntityPrimaryId(Long entityPrimaryId) {
-		this.entityPrimaryId = entityPrimaryId;
 	}
 	public String getAddressLine1() {
 		return addressLine1;
@@ -48,6 +42,12 @@ public class AddressPojo {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	public String getCounty() {
+		return county;
+	}
+	public void setCounty(String county) {
+		this.county = county;
+	}
 	public String getCountry() {
 		return country;
 	}
@@ -72,6 +72,5 @@ public class AddressPojo {
 	public void setLongitudeCoordinate(String longitudeCoordinate) {
 		this.longitudeCoordinate = longitudeCoordinate;
 	}
-	
 	
 }

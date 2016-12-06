@@ -18,6 +18,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
+import com.gmbestablished.gmb_backend_general_rest.dao.ContentUpload;
 import com.gmbestablished.gmb_backend_general_rest.dao.EpPicker;
 import com.gmbestablished.gmb_backend_general_rest.dao.ReturnCategories;
 import com.gmbestablished.gmb_backend_general_rest.dao.returnStringEntityPrimary;
@@ -69,7 +70,6 @@ public class Controller {
 		
 		EpPicker epPicker = new EpPicker();
 		String result = epPicker.epPick(epPicker_pojo);
-//		epPicker_pojo.setResponse(result);
 		System.out.println("returning eppicker");
 		return result;
 	}
@@ -78,17 +78,8 @@ public class Controller {
 	@RequestMapping(value = "/epRegister", method = RequestMethod.POST)
 	public @ResponseBody String register_JSON ( @RequestBody EntityPrimaryPojo entityPrimaryPojo) throws JsonProcessingException{
 
-		String result = entityPrimaryPojo.getName();
-//		String result2 = entityPrimaryPojo.getDescription();
-//		String ST1 = entityPrimaryPojo.getServices().get(0).getServiceBlockTitle();
-//		String SB1 = entityPrimaryPojo.getServices().get(0).getServiceBlockBody();
-//		String ST2 = entityPrimaryPojo.getServices().get(1).getServiceBlockTitle();
-//		String SB2 = entityPrimaryPojo.getServices().get(1).getServiceBlockBody();
-//		String addressLine1 = entityPrimaryPojo.getAddress().get(0).getAddressLine1();
-		System.out.println(result.toString());
-//		System.out.println(result2.toString());
-//		System.out.println(ST1 + " " + SB1 + " " + ST2 + " " + SB2);
-//		System.out.println(addressLine1);
+		ContentUpload contentUpload = new ContentUpload();
+		String result = contentUpload.ContentUploadSave(entityPrimaryPojo);
 		List<ResponseMessage> responseMessages = new ArrayList<ResponseMessage>();
 		ResponseMessage responseMessage = new ResponseMessage();
 		responseMessages.add(responseMessage);

@@ -12,13 +12,13 @@ angular.
     ctrl.categories = EpCategories.query();
 	 ctrl.response = "this is a test";
     ctrl.submit = function(){
-    	/*		ctrl.serivceArray = [];
+    			ctrl.serivceArray = [];
     	ctrl.serivceArray.push({"serviceBlockTitle" : ctrl.services.serviceBlockTitle1,
-			"serviceBlockBody" : ctrl.services.serviceBlockBody1});    	
+		"serviceBlockBody" : ctrl.services.serviceBlockBody1});    	
     	ctrl.serivceArray.push({"serviceBlockTitle" : ctrl.services.serviceBlockTitle2,
 			"serviceBlockBody" : ctrl.services.serviceBlockBody2});
     	   	ctrl.serivceArray.push({"serviceBlockTitle" : ctrl.services.serviceBlockTitle3,
-			"serviceBlockBody" : ctrl.services.serviceBlockBody3});
+			"serviceBlockBody" : ctrl.services.serviceBlockBody3}); 
     	
     	  	ctrl.testimonialArray = [];
     	ctrl.testimonialArray.push({
@@ -38,35 +38,34 @@ angular.
     		"lastName" : ctrl.user.lastName,
     		"username" : ctrl.user.username,
     		"password" : ctrl.user.password
-    	}) */
+    	})
     	
-/*    	ctrl.addressArray = [];
+    	ctrl.addressArray = [];
     	ctrl.addressArray.push({
-    		"addressLine1" : ctrl.address.addressLine1,
-    	//	"addressLine2" : ctrl.address.addressLine2,
-    	//	"addressLine3" : ctrl.address.addressLine3,
-    	//	"city" : ctrl.address.city,
-    	//	"county" : ctrl.address.county,
-    	//	"country" : ctrl.address.country,
-    	//	"postCode" : ctrl.address.postcode,
-    	//	"latitude" : ctrl.address.latitude,
-    	//	"longitude" : ctrl.address.longitude    		
-    	}) */
+    		"addressLine1" : ctrl.addresses.addressLine1,
+    		"addressLine2" : ctrl.address.addressLine2,
+    		"addressLine3" : ctrl.address.addressLine3,
+    		"city" : ctrl.address.city,
+    		"county" : ctrl.address.county,
+    		"country" : ctrl.address.country,
+    		"postCode" : ctrl.address.postcode,
+    		"latitude" : ctrl.address.latitude,
+    		"longitude" : ctrl.address.longitude    		
+    	}) 
     	
     	var registerData = {
     			
-    	//		"user" : ctrl.userArray,
+    			"users" : ctrl.userArray,
     			"name" : ctrl.name,
     			"description" : ctrl.description,
     			"category" : ctrl.selectedCategory,
-    	//		"address" : ctrl.addressArray,
-    	//		"aboutUs" : ctrl.aboutUs,
-    	//		"services" 	: ctrl.serivceArray,
-    	//		"testimonials" : ctrl.testimonialArray
+    			"addresses" : ctrl.addressArray,
+    			"aboutUs" : ctrl.aboutUs,
+    			"services" 	: ctrl.serivceArray,
+    			"testimonials" : ctrl.testimonialArray
    			
     	};
     	var jsondataStringify = JSON.stringify(registerData);
-    //	ctrl.responses=EpRegister.save(jsondataStringify);
     	EpRegister.save(jsondataStringify,function(data){
     		ctrl.message = data;
     	}, function(error) {

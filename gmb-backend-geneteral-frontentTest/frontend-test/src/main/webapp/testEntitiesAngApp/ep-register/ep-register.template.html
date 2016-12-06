@@ -1,16 +1,11 @@
 
 <strong>Register Page</strong> <br>
-{{$ctrl.user.firstName}}<br>
-Category: 
-<div ng-repeat="category in $ctrl.categories" >
-{{category.id}} {{category.name}} 
-</div>
 <form name="signupForm" ng-submit="$ctrl.submit()">
-First Name: <input type="text" ng-model="$ctrl.user.firstName"> <br>
+First Name: <input type="text" ng-model="$ctrl.user.firstName" > <br>
 Last Name:  <input type="text" ng-model="$ctrl.user.lastName"> <br>
 Company Name: <input type="text" ng-model="$ctrl.name">
 Company Description: <input type="text" ng-model="$ctrl.description">
-Address Line 1 : <input type="text" ng-model="$ctrl.address.addressLine1">
+Address Line 1 : <input type="text" ng-model="$ctrl.addresses.addressLine1">
 Address Line 2 : <input type="text" ng-model="$ctrl.address.addressLine2">
 Address Line 3 : <input type="text" ng-model="$ctrl.address.addressLine3">
 City : <input type="text" ng-model="$ctrl.address.city">
