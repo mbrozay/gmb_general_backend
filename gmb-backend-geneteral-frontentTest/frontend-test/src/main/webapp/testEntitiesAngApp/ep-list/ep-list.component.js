@@ -17,7 +17,12 @@ angular.
 	               function EPListController(EpAll) {
 		  this.eps = EpAll.query();
 		  this.orderProp = 'age';
+
 	  }
+	  
+
+	    
+	  
 	  ]
 	  
 	});

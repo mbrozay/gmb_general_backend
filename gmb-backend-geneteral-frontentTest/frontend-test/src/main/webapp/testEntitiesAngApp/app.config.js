@@ -16,6 +16,9 @@ angular.
         when('/eps/:id', {
           template: '<ep-detail></ep-detail>'
         }).
+        when('/login', {
+            template: '<ep-login></ep-login>'
+          }).
         otherwise('/eps');
     }
   ]);

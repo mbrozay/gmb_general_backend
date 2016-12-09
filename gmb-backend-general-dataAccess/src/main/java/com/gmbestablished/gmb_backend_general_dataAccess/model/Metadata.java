@@ -37,6 +37,12 @@ public class Metadata {
 	inverseJoinColumns = { @JoinColumn(name = "entityPrimaryId")})
 	@JsonBackReference
 	private List<EntityPrimary> entityPrimary = new ArrayList<EntityPrimary>();
+	@ManyToMany
+	@JoinTable(name = "metadata_relationships", joinColumns = {
+	@JoinColumn(name = "metadataPrimaryId") },
+	inverseJoinColumns = { @JoinColumn(name = "metadataSecondaryId")})
+	@JsonManagedReference
+	private List<Metadata> metaData = new ArrayList<Metadata>();
 	
 	public long getId() {
 		return id;
@@ -53,12 +59,6 @@ public class Metadata {
 	public String getMetaDataValue() {
 		return metaDataValue;
 	}
-	/*public long getMetaDataTypeId() {
-		return metaDataTypeId;
-	}
-	public void setMetaDataTypeId(long metaDataTypeId) {
-		this.metaDataTypeId = metaDataTypeId;
-	}*/
 	public void setMetaDataValue(String metaDataValue) {
 		this.metaDataValue = metaDataValue;
 	}
@@ -68,5 +68,10 @@ public class Metadata {
 	public void setEntityPrimary(List<EntityPrimary> entityPrimary) {
 		this.entityPrimary = entityPrimary;
 	}
-	
+	public List<Metadata> getMetaData() {
+		return metaData;
+	}
+	public void setMetaData(List<Metadata> metaData) {
+		this.metaData = metaData;
+	}
 }

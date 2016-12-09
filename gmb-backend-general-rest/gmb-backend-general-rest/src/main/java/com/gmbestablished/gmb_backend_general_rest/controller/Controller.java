@@ -87,7 +87,6 @@ public class Controller {
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonInString = mapper.writeValueAsString(responseMessages);
 		return jsonInString;
-		
 	}
 
 }

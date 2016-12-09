@@ -11,6 +11,7 @@ import com.gmbestablished.gmb_backend_general_dataAccess.model.Metadata;
 import com.gmbestablished.gmb_backend_general_dataAccess.model.Metadatatype;
 import com.gmbestablished.gmb_backend_general_dataAccess.model.User;
 import com.gmbestablished.gmb_backend_general_dataAccess.util.HibernateUtil;
+import com.gmbestablished.gmb_backend_general_rest.pojo.AboutUs;
 import com.gmbestablished.gmb_backend_general_rest.pojo.EntityPrimaryPojo;
 import com.gmbestablished.gmb_backend_general_dataAccess.model.Category;
 
@@ -61,17 +62,112 @@ public class ContentUpload {
 		aboutUsMetadata.setMetaDataTypeId(aboutUsMetadatatype);
 		aboutUsMetadata.setMetaDataValue(entityPrimaryPojo.getAboutUs());
 		session.save(aboutUsMetadata);
-		metadatas.add(aboutUsMetadata);	
+		metadatas.add(aboutUsMetadata);		
+
 		
-		Metadata aboutUsMetadataOOP = new MetaDataContent((long)2).metadataSingleValue(entityPrimaryPojo);
-		session.save(aboutUsMetadataOOP);
+		//Services
+		Metadata service1TitleMetadata = new Metadata();
+		Metadatatype service1TitleMetadataType = (Metadatatype) session.get(Metadatatype.class, (long) 3);
+		service1TitleMetadata.setMetaDataTypeId(service1TitleMetadataType);
+		service1TitleMetadata.setMetaDataValue(entityPrimaryPojo.getServices().get(0).getServiceBlockTitle());
+		session.save(service1TitleMetadata);
+		metadatas.add(service1TitleMetadata);
+		
+		Metadata service1BodyMetadata = new Metadata();
+		Metadatatype service1BodyMetadataType = (Metadatatype) session.get(Metadatatype.class, (long) 4);
+		service1BodyMetadata.setMetaDataTypeId(service1BodyMetadataType);
+		service1BodyMetadata.setMetaDataValue(entityPrimaryPojo.getServices().get(0).getServiceBlockBody());
+		session.save(service1BodyMetadata);
+		metadatas.add(service1BodyMetadata);
+		
+		Metadata service2TitleMetadata = new Metadata();
+		Metadatatype service2TitleMetadataType = (Metadatatype) session.get(Metadatatype.class, (long) 5);
+		service2TitleMetadata.setMetaDataTypeId(service2TitleMetadataType);
+		service2TitleMetadata.setMetaDataValue(entityPrimaryPojo.getServices().get(1).getServiceBlockTitle());
+		session.save(service2TitleMetadata);
+		metadatas.add(service2TitleMetadata);
+		
+		Metadata service2BodyMetadata = new Metadata();
+		Metadatatype service2BodyMetadataType = (Metadatatype) session.get(Metadatatype.class, (long) 6);
+		service2BodyMetadata.setMetaDataTypeId(service2BodyMetadataType);
+		service2BodyMetadata.setMetaDataValue(entityPrimaryPojo.getServices().get(1).getServiceBlockBody());
+		session.save(service2BodyMetadata);
+		metadatas.add(service2BodyMetadata);
+		
+		Metadata service3TitleMetadata = new Metadata();
+		Metadatatype service3TitleMetadataType = (Metadatatype) session.get(Metadatatype.class, (long) 7);
+		service3TitleMetadata.setMetaDataTypeId(service3TitleMetadataType);
+		service3TitleMetadata.setMetaDataValue(entityPrimaryPojo.getServices().get(2).getServiceBlockTitle());
+		session.save(service3TitleMetadata);
+		metadatas.add(service3TitleMetadata);
+		
+		Metadata service3BodyMetadata = new Metadata();
+		Metadatatype service3BodyMetadataType = (Metadatatype) session.get(Metadatatype.class, (long) 8);
+		service3BodyMetadata.setMetaDataTypeId(service3BodyMetadataType);
+		service3BodyMetadata.setMetaDataValue(entityPrimaryPojo.getServices().get(2).getServiceBlockBody());
+		session.save(service3BodyMetadata);
+		metadatas.add(service3BodyMetadata);
+		
+		//Testimonial
+		Metadata testimonialFromName1Metadata = new Metadata();
+		Metadatatype testimonial1FromNameMetadataType = (Metadatatype) session.get(Metadatatype.class, (long) 9);
+		testimonialFromName1Metadata.setMetaDataTypeId(testimonial1FromNameMetadataType);
+		testimonialFromName1Metadata.setMetaDataValue(entityPrimaryPojo.getTestimonials().get(0).getTestimonialFromName());
+		session.save(testimonialFromName1Metadata);
+		metadatas.add(testimonialFromName1Metadata);
+				
+		Metadata testimonialFromWebSite1Metadata = new Metadata();
+		Metadatatype testimonialFromWebSite1MetadataType = (Metadatatype) session.get(Metadatatype.class, (long) 10);
+		testimonialFromWebSite1Metadata.setMetaDataTypeId(testimonialFromWebSite1MetadataType);
+		testimonialFromWebSite1Metadata.setMetaDataValue(entityPrimaryPojo.getTestimonials().get(0).getTestimonialFromURL());
+		session.save(testimonialFromWebSite1Metadata);
+		metadatas.add(testimonialFromWebSite1Metadata);
+
+		Metadata testimonialBody1Metadata = new Metadata();
+		Metadatatype testimonialBody1MetadataType = (Metadatatype) session.get(Metadatatype.class, (long) 11);
+		testimonialBody1Metadata.setMetaDataTypeId(testimonialBody1MetadataType);
+		testimonialBody1Metadata.setMetaDataValue(entityPrimaryPojo.getTestimonials().get(0).getTestimonialBody());
+		session.save(testimonialBody1Metadata);
+		metadatas.add(testimonialBody1Metadata);
+		
+		Metadata testimonialFromName2Metadata = new Metadata();
+		Metadatatype testimonialFromName2MetadataType = (Metadatatype) session.get(Metadatatype.class, (long) 9);
+		testimonialFromName2Metadata.setMetaDataTypeId(testimonialFromName2MetadataType);
+		testimonialFromName2Metadata.setMetaDataValue(entityPrimaryPojo.getTestimonials().get(1).getTestimonialFromName());
+		session.save(testimonialFromName2Metadata);
+		metadatas.add(testimonialFromName2Metadata);
+				
+		Metadata testimonialFromWebSite2Metadata = new Metadata();
+		Metadatatype testimonialFromWebSite2MetadataType = (Metadatatype) session.get(Metadatatype.class, (long) 10);
+		testimonialFromWebSite2Metadata.setMetaDataTypeId(testimonialFromWebSite2MetadataType);
+		testimonialFromWebSite2Metadata.setMetaDataValue(entityPrimaryPojo.getTestimonials().get(1).getTestimonialFromURL());
+		session.save(testimonialFromWebSite2Metadata);
+		metadatas.add(testimonialFromWebSite2Metadata);
+
+		Metadata testimonialBody2Metadata = new Metadata();
+		Metadatatype testimonialBody2MetadataType = (Metadatatype) session.get(Metadatatype.class, (long) 11);
+		testimonialBody2Metadata.setMetaDataTypeId(testimonialBody2MetadataType);
+		testimonialBody2Metadata.setMetaDataValue(entityPrimaryPojo.getTestimonials().get(1).getTestimonialBody());
+		session.save(testimonialBody2Metadata);
+		metadatas.add(testimonialBody2Metadata);
 		
 		entityPrimary.setMetadata(metadatas);
-		
 		session.save(entityPrimary);
 		entityPrimary.getAddress().add(address);
 		user.getEntityPrimary().add(entityPrimary);	
 		aboutUsMetadata.getEntityPrimary().add(entityPrimary);
+		service1TitleMetadata.getEntityPrimary().add(entityPrimary);
+		service1BodyMetadata.getEntityPrimary().add(entityPrimary);
+		service2TitleMetadata.getEntityPrimary().add(entityPrimary);
+		service2BodyMetadata.getEntityPrimary().add(entityPrimary);
+		service3TitleMetadata.getEntityPrimary().add(entityPrimary);
+		service3BodyMetadata.getEntityPrimary().add(entityPrimary);
+		testimonialFromName1Metadata.getEntityPrimary().add(entityPrimary);
+		testimonialFromWebSite1Metadata.getEntityPrimary().add(entityPrimary);
+		testimonialBody1Metadata.getEntityPrimary().add(entityPrimary);
+		testimonialFromName2Metadata.getEntityPrimary().add(entityPrimary);
+		testimonialFromWebSite2Metadata.getEntityPrimary().add(entityPrimary);
+		testimonialBody2Metadata.getEntityPrimary().add(entityPrimary);
 		session.save(address);
 		session.getTransaction().commit();
 		

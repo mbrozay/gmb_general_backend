@@ -9,6 +9,10 @@ public class AboutUs extends Metadata {
 	private Metadatatype metaDataTypeId;
 	private String metaDataValue;
 	
+	public AboutUs (EntityPrimaryPojo entityPrimaryPojo){
+		setMetaDataValue("TestString");
+	}
+	
 	public long getId() {
 		return id;
 	}
@@ -27,4 +31,5 @@ public class AboutUs extends Metadata {
 	public void setMetaDataValue(String metaDataValue) {
 		this.metaDataValue = metaDataValue;
 	}
+	
 }
