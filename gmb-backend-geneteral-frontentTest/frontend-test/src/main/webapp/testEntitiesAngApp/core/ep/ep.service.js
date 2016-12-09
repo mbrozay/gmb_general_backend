@@ -71,7 +71,7 @@ factory('EpLogin', ['$resource','$http',
           method: 'POST',
           accept: "application/json",
           contentType: "application/json",
-          isArray: true
+          isArray: false
         }	
 	})  
 	return response;
