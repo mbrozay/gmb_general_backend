@@ -6,5 +6,7 @@ angular.module('gmbcatApp', [
   'core',
   'epDetail',
   'epList',
-  'epRegister'
+  'epRegister',
+  'epLogin',
+  'epEdit'
 ]);

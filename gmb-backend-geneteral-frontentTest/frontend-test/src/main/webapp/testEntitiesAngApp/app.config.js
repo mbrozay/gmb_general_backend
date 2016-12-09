@@ -19,6 +19,9 @@ angular.
         when('/login', {
             template: '<ep-login></ep-login>'
           }).
+        when('/edit', {
+            template: '<ep-edit></ep-edit>'
+            }).
         otherwise('/eps');
     }
   ]);

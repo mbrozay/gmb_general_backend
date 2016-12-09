@@ -20,10 +20,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.gmbestablished.gmb_backend_general_rest.dao.ContentUpload;
 import com.gmbestablished.gmb_backend_general_rest.dao.EpPicker;
+import com.gmbestablished.gmb_backend_general_rest.dao.LoginValidate;
 import com.gmbestablished.gmb_backend_general_rest.dao.ReturnCategories;
 import com.gmbestablished.gmb_backend_general_rest.dao.returnStringEntityPrimary;
 import com.gmbestablished.gmb_backend_general_rest.pojo.EntityPrimaryPojo;
 import com.gmbestablished.gmb_backend_general_rest.pojo.EpPicker_pojo;
+import com.gmbestablished.gmb_backend_general_rest.pojo.LoginPojo;
 import com.gmbestablished.gmb_backend_general_rest.pojo.ResponseMessage;
 
 @CrossOrigin(origins = "*")
@@ -86,6 +88,19 @@ public class Controller {
 		responseMessage.setResponse("Success");
 		ObjectMapper mapper = new ObjectMapper();
 		String jsonInString = mapper.writeValueAsString(responseMessages);
+		return jsonInString;
+	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/epLogin", method = RequestMethod.POST)
+	public @ResponseBody String login_JSON ( @RequestBody LoginPojo loginPojo) throws JsonProcessingException{
+		LoginValidate loginValidate = new LoginValidate();
+		String result = loginValidate.LoginCheckCreds(loginPojo);
+		loginPojo.setSessionToken(result);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonInString = mapper.writeValueAsString(loginPojo);
+		
 		return jsonInString;
 	}
 

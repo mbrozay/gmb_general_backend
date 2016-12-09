@@ -10,7 +10,6 @@ angular.
                  function registerListController(EpRegister,EpCategories){	
     var ctrl = this;
     ctrl.categories = EpCategories.query();
-	 ctrl.response = "this is a test";
     ctrl.submit = function(){
     			ctrl.serivceArray = [];
     	ctrl.serivceArray.push({"serviceBlockTitle" : ctrl.services.serviceBlockTitle1,
