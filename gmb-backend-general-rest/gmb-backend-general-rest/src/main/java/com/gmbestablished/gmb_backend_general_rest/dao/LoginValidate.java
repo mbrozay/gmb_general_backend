@@ -38,7 +38,7 @@ public class LoginValidate {
 			SessionToken sessionToken = new SessionToken();
 			Long playerId = users.get(0).getId();
 			sessionToken.setSessionToken(sessionTokenValue);
-			sessionToken.setUserId(playerId);
+			sessionToken.setUser(users.get(0));
 			session.save(sessionToken);
 			session.getTransaction().commit();
 			

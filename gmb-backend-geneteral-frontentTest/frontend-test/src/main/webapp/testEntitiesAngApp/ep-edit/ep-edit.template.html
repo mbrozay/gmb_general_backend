@@ -1,1 +1,53 @@
-<strong>Edit Template</strong>
+<strong>Edit Template</strong></br>
+
+<div ng-repeat="ep in $ctrl.eps">
+
+<strong>Register Page</strong> <br>
+<form name="signupForm" ng-submit="$ctrl.submit()">
+Company Name: <input type="text" ng-model="ep.name">
+Company Description: <input type="text" ng-model="ep.description">
+<div ng-repeat="addr in ep.address " >
+Address Line 1 : <input type="text" ng-model="addr.addressLine1">
+Address Line 2 : <input type="text" ng-model="addr.addressLine2">
+Address Line 3 : <input type="text" ng-model="addr.address.addressLine3">
+City : <input type="text" ng-model="addr.city">
+County : <input type="text" ng-model="addr.county">
+Country : <input type="text" ng-model="addr.country">
+Post Code: <input type="text" ng-model="addr.postCode"><br>
+</div>
+<div ng-repeat="cat in ep.category " >
+Category: 
+<select ng-model="cat.id" 
+        ng-options="category.id as category.name for category in $ctrl.categories">
+    <option value="">Select Category</option>
+</select>
+</div>
+<!-- <div ng-repeat="md in ep.metadata | aboutUsFilter:2" > -->
+About Us :  <input type="text" ng-model="(ep.metadata | aboutUsFilter:2)[0].metaDataValue"> <br>
+Service Title 1 :  <input type="text" ng-model="(ep.metadata | aboutUsFilter:3)[0].metaDataValue"> <br>
+Service Blurb 1:  <input type="text" ng-model="(ep.metadata | aboutUsFilter:4)[0].metaDataValue"> <br>
+Service Title 2 :  <input type="text" ng-model="(ep.metadata | aboutUsFilter:5)[0].metaDataValue"> <br>
+Service Blurb 2:  <input type="text" ng-model="(ep.metadata | aboutUsFilter:6)[0].metaDataValue"> <br>
+Service Title 3 :  <input type="text" ng-model="(ep.metadata | aboutUsFilter:7)[0].metaDataValue"> <br>
+Service Blurb 3 :  <input type="text" ng-model="(ep.metadata | aboutUsFilter:8)[0].metaDataValue"> <br>
+Testimonial 1 - From : <input type="text" ng-model="(ep.metadata | aboutUsFilter:9)[0].metaDataValue"> <br>
+Testimonial 1 - URL : <input type="text" ng-model="(ep.metadata | aboutUsFilter:10)[0].metaDataValue"> <br>
+Testimonial 1 - Body : <input type="text" ng-model="(ep.metadata | aboutUsFilter:11)[0].metaDataValue"> <br>
+Testimonial 2 - From : <input type="text" ng-model="(ep.metadata | aboutUsFilter:12)[0].metaDataValue"> <br>
+Testimonial 2 - URL : <input type="text" ng-model="(ep.metadata | aboutUsFilter:13)[0].metaDataValue"> <br>
+Testimonial 2 - Body : <input type="text" ng-model="(ep.metadata | aboutUsFilter:14)[0].metaDataValue"> <br>
+</div>
+  <button type="submit">Sign up</button><br>
+</form>
+ <strong>Response</strong><br>
+ <div ng-repeat="resp in $ctrl.message" >
+{{resp.response}}
+</div>
+
+
+
+
+
+
+
+</div>

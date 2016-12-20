@@ -77,3 +77,19 @@ factory('EpLogin', ['$resource','$http',
 	return response;
 	}
 ]);
+
+angular.
+module('core.ep').
+factory('EpByUser', ['$resource','$http',
+  function($resource,$http) {
+	var response = $resource('http://localhost:8080/gmb-backend-general-rest/epByUser', {}, {
+        save: {
+          method: 'POST',
+          accept: "application/json",
+          contentType: "application/json",
+          isArray: false
+        }	
+	})  
+	return response;
+	}
+]);

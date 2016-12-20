@@ -103,5 +103,12 @@ public class Controller {
 		
 		return jsonInString;
 	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/epByUser", method = RequestMethod.POST)
+	public @ResponseBody String epByUser_JSON ( @RequestBody EntityPrimaryPojo entityPrimaryPojo) throws JsonProcessingException{
+		
+		return null;
+	}
 
 }
