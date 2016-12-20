@@ -3,7 +3,7 @@
 <div ng-repeat="ep in $ctrl.eps">
 
 <strong>Register Page</strong> <br>
-<form name="signupForm" ng-submit="$ctrl.submit()">
+<form name="signupForm" ng-submit="$ctrl.submit($ctrl.eps)">
 Company Name: <input type="text" ng-model="ep.name">
 Company Description: <input type="text" ng-model="ep.description">
 <div ng-repeat="addr in ep.address " >
@@ -36,12 +36,9 @@ Testimonial 1 - Body : <input type="text" ng-model="(ep.metadata | aboutUsFilter
 Testimonial 2 - From : <input type="text" ng-model="(ep.metadata | aboutUsFilter:12)[0].metaDataValue"> <br>
 Testimonial 2 - URL : <input type="text" ng-model="(ep.metadata | aboutUsFilter:13)[0].metaDataValue"> <br>
 Testimonial 2 - Body : <input type="text" ng-model="(ep.metadata | aboutUsFilter:14)[0].metaDataValue"> <br>
-</div>
+
   <button type="submit">Sign up</button><br>
 </form>
- <strong>Response</strong><br>
- <div ng-repeat="resp in $ctrl.message" >
-{{resp.response}}
 </div>
 
 
