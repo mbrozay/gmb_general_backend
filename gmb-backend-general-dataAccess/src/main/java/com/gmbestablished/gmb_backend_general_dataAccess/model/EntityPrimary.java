@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -41,7 +42,12 @@ public class EntityPrimary {
 	@ManyToMany(mappedBy="entityPrimary")
 	@JsonBackReference
 	private List <User> user = new ArrayList<User>();
-	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="entityPrimary", cascade=CascadeType.ALL)
+	@JsonManagedReference
+	private List<Review> review = new ArrayList<Review>();
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="entityPrimary", cascade=CascadeType.ALL)
+	@JsonManagedReference
+	private List<Service> service = new ArrayList<Service>();
 	
 	public Long getId() {
 		return id;
@@ -84,5 +90,17 @@ public class EntityPrimary {
 	}
 	public void setUser(List<User> user) {
 		this.user = user;
+	}
+	public List<Review> getReview() {
+		return review;
+	}
+	public void setReview(List<Review> review) {
+		this.review = review;
+	}
+	public List<Service> getService() {
+		return service;
+	}
+	public void setService(List<Service> service) {
+		this.service = service;
 	}	
 }
