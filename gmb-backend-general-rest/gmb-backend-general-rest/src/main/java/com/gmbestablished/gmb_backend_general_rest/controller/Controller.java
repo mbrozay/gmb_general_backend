@@ -32,12 +32,7 @@ import com.gmbestablished.gmb_backend_general_rest.pojo.ResponseMessage;
 @RestController
 public class Controller {
 	
-	@RequestMapping("/greeting1")
-	public String thl() {
-		return "Hi There";
-		
-	}
-	
+	//GET all entities
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/entitySelector")
 	public String allEntityPrimaries() throws JsonProcessingException{
@@ -48,6 +43,7 @@ public class Controller {
 		
 	}
 	
+	//GET list of categories
 	@CrossOrigin(origins = "*")
 	@RequestMapping("/categories")
 	public String allCategories() throws JsonProcessingException{
@@ -56,16 +52,17 @@ public class Controller {
 		return stringRc;	
 	}
 	
-	@RequestMapping("/entitySelectorWithAddress")
+	
+/*	@RequestMapping("/entitySelectorWithAddress")
 	public String allEntityPrimariesWithAddresses() throws JsonProcessingException{
 		returnStringEntityPrimary rsep =new returnStringEntityPrimary();
 		String stringRsep = rsep.EntityPrimaryWithAddressList();
 		
 		return stringRsep;
 		
-	}
+	}*/
 	
-	
+	//Getting all details of one entity primary. Used for public listing and selection by logged in user for editing
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/epPicker", method = RequestMethod.POST)	
 	public  @ResponseBody String epPicker_JSON( @RequestBody EpPicker_pojo epPicker_pojo ) throws JsonProcessingException   {		
@@ -76,6 +73,7 @@ public class Controller {
 		return result;
 	}
 	
+	//Content upload and editing
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/epRegister", method = RequestMethod.POST)
 	public @ResponseBody String register_JSON ( @RequestBody EntityPrimaryPojo entityPrimaryPojo) throws JsonProcessingException{
@@ -91,6 +89,23 @@ public class Controller {
 		return jsonInString;
 	}
 	
+	//Signing up and editing user details
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/epUsers", method = RequestMethod.POST)
+	public @ResponseBody String signup_JSON ( @RequestBody EntityPrimaryPojo entityPrimaryPojo) throws JsonProcessingException{
+
+		ContentUpload contentUpload = new ContentUpload();
+		String result = contentUpload.ContentUploadSave(entityPrimaryPojo);
+		List<ResponseMessage> responseMessages = new ArrayList<ResponseMessage>();
+		ResponseMessage responseMessage = new ResponseMessage();
+		responseMessages.add(responseMessage);
+		responseMessage.setResponse("Success");
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonInString = mapper.writeValueAsString(responseMessages);
+		return jsonInString;
+	}
+	
+	//Login, generate session token
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/epLogin", method = RequestMethod.POST)
 	public @ResponseBody String login_JSON ( @RequestBody LoginPojo loginPojo) throws JsonProcessingException{
@@ -104,11 +119,11 @@ public class Controller {
 		return jsonInString;
 	}
 	
-	@CrossOrigin(origins = "*")
+/*	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/epByUser", method = RequestMethod.POST)
 	public @ResponseBody String epByUser_JSON ( @RequestBody EntityPrimaryPojo entityPrimaryPojo) throws JsonProcessingException{
 		
 		return null;
-	}
+	}*/
 
 }

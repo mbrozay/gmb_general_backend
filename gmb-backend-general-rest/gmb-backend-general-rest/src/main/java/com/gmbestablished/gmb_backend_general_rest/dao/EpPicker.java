@@ -13,6 +13,7 @@ import com.gmbestablished.gmb_backend_general_dataAccess.model.EntityPrimary;
 import com.gmbestablished.gmb_backend_general_dataAccess.model.SessionToken;
 import com.gmbestablished.gmb_backend_general_dataAccess.model.User;
 import com.gmbestablished.gmb_backend_general_dataAccess.util.HibernateUtil;
+import com.gmbestablished.gmb_backend_general_rest.pojo.EntityPrimaryPojo;
 import com.gmbestablished.gmb_backend_general_rest.pojo.EpPicker_pojo;
 
 public class EpPicker {
@@ -52,18 +53,24 @@ public class EpPicker {
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
 		
-
+		if (allEntityPrimary.size() == 0){
+			EntityPrimaryPojo entityPrimaryPojo = new EntityPrimaryPojo();
+			try {
+				allEntityPrimaryJacksonJson = "[" + mapper.writeValueAsString(entityPrimaryPojo) + "]";
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else {
 		try {
 			allEntityPrimaryJacksonJson = mapper.writeValueAsString(allEntityPrimary);
-					System.out.println(allEntityPrimaryJacksonJson);
-			
-			
-			
+					System.out.println(allEntityPrimaryJacksonJson);	
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		}
 		session.close();
 		return allEntityPrimaryJacksonJson;
 		

@@ -26,11 +26,12 @@ public class returnStringEntityPrimary {
 		
 		List<EntityPrimary> allEntityPrimary = (ArrayList<EntityPrimary>) query.list();
 		System.out.println("Size of list result is " + allEntityPrimary.size());
-		System.out.println(allEntityPrimary.get(0).getAddress().get(0).getAddressLine1());
-		System.out.println(allEntityPrimary.get(0).getCategory().get(0).getDescription());
-		System.out.println(allEntityPrimary.get(0).getMetadata().get(0).getMetaDataTypeId().getMetaDataTypeName());
-		
-		
+		if (allEntityPrimary.size() > 0){
+			System.out.println(allEntityPrimary.get(0).getAddress().get(0).getAddressLine1());
+			System.out.println(allEntityPrimary.get(0).getCategory().get(0).getDescription());
+			System.out.println(allEntityPrimary.get(0).getMetadata().get(0).getMetaDataTypeId().getMetaDataTypeName());
+		}
+
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.configure(SerializationFeature.INDENT_OUTPUT, true);
 		
@@ -41,7 +42,7 @@ public class returnStringEntityPrimary {
 	return allEntityPrimaryJacksonJson;	
 	}
 	
-	public String EntityPrimaryWithAddressList (){
+/*	public String EntityPrimaryWithAddressList (){
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
@@ -68,7 +69,7 @@ public class returnStringEntityPrimary {
 	return allEntityPrimaryWithAddressJacksonJson;	
 		
 		
-	}
+	}*/
 
 
 }

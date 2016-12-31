@@ -6,12 +6,32 @@ angular.
   component('epRegister', {
     templateUrl: 'ep-register/ep-register.template.html',
     
-    controller: ['EpRegister','EpCategories',
-                 function registerListController(EpRegister,EpCategories){	
+    controller: ['EpRegister','EpCategories','EpIndividual',
+                 function registerListController(EpRegister,EpCategories,EpIndividual){	
     var ctrl = this;
+    ctrl.ep = { users: [{"firstName": '',"lastName": ''}], services: [], addresses: [{addressLine1:''}] };
+
+    ctrl.addService = function() {
+     ctrl.ep.services.push({"serviceBlockTitle" : '',
+ 		"serviceBlockBody" : ''});
+    }
     ctrl.categories = EpCategories.query();
+    var loadData = {	
+			"id" : ""
+	};
+    var jsondataStringifyloadData = JSON.stringify(loadData);
+	EpIndividual.save(jsondataStringifyloadData,function(data){
+		ctrl.eps = data;	     		
+	}, function(error) {
+		ctrl.loadmessage = "error";
+	});
+	
     ctrl.submit = function(){
-    			ctrl.serivceArray = [];
+    			
+
+    			var jsondataStringify1 = JSON.stringify(ctrl.ep);
+    	
+    			/*ctrl.serivceArray = [];
     	ctrl.serivceArray.push({"serviceBlockTitle" : ctrl.services.serviceBlockTitle1,
 		"serviceBlockBody" : ctrl.services.serviceBlockBody1});    	
     	ctrl.serivceArray.push({"serviceBlockTitle" : ctrl.services.serviceBlockTitle2,
@@ -29,9 +49,9 @@ angular.
     		"testimonialFromName" : ctrl.testimonials.testimonialFromName2,
 			"testimonialBody" : ctrl.testimonials.testimonialBody2, 
 			"testimonialFromURL" : ctrl.testimonials.testimonialFromURL2
-			});
+			});*/
     	
-    	ctrl.userArray = [];
+    	/*ctrl.userArray = [];
     	ctrl.userArray.push({
     		"firstName" : ctrl.user.firstName,
     		"lastName" : ctrl.user.lastName,
@@ -63,12 +83,12 @@ angular.
     			"services" 	: ctrl.serivceArray,
     			"testimonials" : ctrl.testimonialArray
    			
-    	};
-    	var jsondataStringify = JSON.stringify(registerData);
-    	EpRegister.save(jsondataStringify,function(data){
+    	};*/
+    	var jsondataStringify = JSON.stringify(jsondataStringify1);
+    	EpRegister.save(jsondataStringify1,function(data){
     		ctrl.message = data;
     	}, function(error) {
-    	    ctrl.message = "error";
+    	    ctrl.errorMessage = "error";
     	}
     			)
     }           

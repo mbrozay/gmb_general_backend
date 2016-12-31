@@ -1,46 +1,39 @@
 
 <strong>Register Page</strong> <br>
+
 <form name="signupForm" ng-submit="$ctrl.submit()">
-First Name: <input type="text" ng-model="$ctrl.user.firstName" > <br>
-Last Name:  <input type="text" ng-model="$ctrl.user.lastName"> <br>
-Company Name: <input type="text" ng-model="$ctrl.name">
-Company Description: <input type="text" ng-model="$ctrl.description">
-Address Line 1 : <input type="text" ng-model="$ctrl.addresses.addressLine1">
-Address Line 2 : <input type="text" ng-model="$ctrl.address.addressLine2">
-Address Line 3 : <input type="text" ng-model="$ctrl.address.addressLine3">
-City : <input type="text" ng-model="$ctrl.address.city">
-County : <input type="text" ng-model="$ctrl.address.county">
-Country : <input type="text" ng-model="$ctrl.address.country">
-Post Code: <input type="text" ng-model="$ctrl.address.postcode"><br>
+First Name: <input ng-repeat="userFN in $ctrl.ep.users track by $index" type='text' ng-model='$ctrl.ep.users[$index].firstName' placeholder='First Name' > <br>
+Last Name:  <input ng-repeat="userLN in $ctrl.ep.users track by $index" type='text' ng-model='$ctrl.ep.users[$index].lastName' placeholder='Last Name'> <br>
+<!-- Company Name: <input type="text" ng-model="$ctrl.ep.name">
+Company Description: <input type="text" ng-model="$ctrl.ep.description">
+Address Line 1 : <input ng-repeat="addressLine1 in $ctrl.ep.addresses track by $index" type='text' ng-model='$ctrl.ep.addresses[$index].addressLine1' placeholder='Address Line 1' >
+Address Line 2 : <input type="text" ng-model="$ctrl.ep.addresses.addressLine2">
+Address Line 3 : <input type="text" ng-model="$ctrl.ep.addresses.addressLine3">
+City : <input type="text" ng-model="$ctrl.ep.addresses.city">
+County : <input type="text" ng-model="$ctrl.ep.addresses.county">
+Country : <input type="text" ng-model="$ctrl.ep.addresses.country">
+Post Code: <input type="text" ng-model="$ctrl.ep.addresses.postcode"><br>
 Category: 
-<select ng-model="$ctrl.selectedCategory" 
+<select ng-model="$ctrl.ep.category" 
         ng-options="category.id as category.name for category in $ctrl.categories">
     <option value="">Select Category</option>
 </select>
-About Us :  <input type="text" ng-model="$ctrl.aboutUs"> <br>
-Service Title 1 :  <input type="text" ng-model="$ctrl.services.serviceBlockTitle1"> <br>
-Service Blurb 1:  <input type="text" ng-model="$ctrl.services.serviceBlockBody1"> <br>
-Service Title 2 :  <input type="text" ng-model="$ctrl.services.serviceBlockTitle2"> <br>
-Service Blurb 2:  <input type="text" ng-model="$ctrl.services.serviceBlockBody2"> <br>
-Service Title 3 :  <input type="text" ng-model="$ctrl.services.serviceBlockTitle3"> <br>
-Service Blurb 3 :  <input type="text" ng-model="$ctrl.services.serviceBlockBody3"> <br>
-Testimonial 1 - From : <input type="text" ng-model="$ctrl.testimonials.testimonialFromName1"> <br>
-Testimonial 1 - Body : <input type="text" ng-model="$ctrl.testimonials.testimonialBody1"> <br>
-Testimonial 1 - Url : <input type="text" ng-model="$ctrl.testimonials.testimonialFromURL1"> <br>
-Testimonial 2 - From : <input type="text" ng-model="$ctrl.testimonials.testimonialFromName2"> <br>
-Testimonial 2 - Body : <input type="text" ng-model="$ctrl.testimonials.testimonialBody2"> <br>
-Testimonial 2 - Url : <input type="text" ng-model="$ctrl.testimonials.testimonialFromURL2"> <br>
-Username:  <input type="text" ng-model="$ctrl.user.username">
-Password:  <input type="text" ng-model="$ctrl.user.password">
-  <button type="submit">Sign up</button><br>
+About Us :  <input type="text" ng-model="$ctrl.ep.aboutUs"> <br>
+Service Block Title <input ng-repeat="serviceBT in $ctrl.ep.services track by $index" type='text' ng-model='$ctrl.ep.services[$index].serviceBlockTitle' placeholder='Service Title'><br>
+Service Block Body Services: <input ng-repeat="serviceBB in $ctrl.ep.services track by $index" type='text' ng-model='$ctrl.ep.services[$index].serviceBlockBody' placeholder='Service Body:'><br>
+<button  type="button" ng-click="$ctrl.addService()">Add Service</button> <br>
+Testimonial 1 - From : <input type="text" ng-model="$ctrl.ep.testimonials.testimonialFromName1"> <br>
+Testimonial 1 - Body : <input type="text" ng-model="$ctrl.ep.testimonials.testimonialBody1"> <br>
+Testimonial 1 - Url : <input type="text" ng-model="$ctrl.ep.testimonials.testimonialFromURL1"> <br>
+Testimonial 2 - From : <input type="text" ng-model="$ctrl.ep.testimonials.testimonialFromName2"> <br>
+Testimonial 2 - Body : <input type="text" ng-model="$ctrl.ep.testimonials.testimonialBody2"> <br> 
+Testimonial 2 - Url : <input type="text" ng-model="$ctrl.ep.testimonials.testimonialFromURL2"> <br>-->
+Username:  <input type="text" ng-model="$ctrl.ep.user.username">
+Password:  <input type="text" ng-model="$ctrl.ep.user.password">
+   <div> <button type="submit">Sign up</button><br>
+       </div>
 </form>
  <strong>Response</strong><br>
  <div ng-repeat="resp in $ctrl.message" >
 {{resp.response}}
 </div>
-
-
-
-
-
-
