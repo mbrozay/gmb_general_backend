@@ -9,7 +9,7 @@ import com.gmbestablished.gmb_backend_general_dataAccess.model.Category;
 public class EntityPrimaryPojo {
 	
 	private Long id;
-	private ArrayList<UserPojo> users = new ArrayList<UserPojo>();
+	private String sessionToken;
 	private String name;
 	private String description;
 	private Long category;
@@ -26,11 +26,11 @@ public class EntityPrimaryPojo {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public ArrayList<UserPojo> getUsers() {
-		return users;
+	public String getSessionToken() {
+		return sessionToken;
 	}
-	public void setUsers(ArrayList<UserPojo> users) {
-		this.users = users;
+	public void setSessionToken(String sessionToken) {
+		this.sessionToken = sessionToken;
 	}
 	public String getName() {
 		return name;

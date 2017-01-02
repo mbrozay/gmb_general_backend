@@ -29,25 +29,25 @@ public class EntityPrimary {
 	private String description;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="entityPrimary", cascade=CascadeType.ALL)
 	@JsonManagedReference
-	private List<Address> address = new ArrayList<Address>();
+	private List<Address> addresses = new ArrayList<Address>();
 	@ManyToMany
 	@JoinTable(name = "category_entityPrimary_association", joinColumns = {
 	@JoinColumn(name = "entityId") },
 	inverseJoinColumns = { @JoinColumn(name = "categoryId")})
 	@JsonManagedReference
-	private List<Category> category = new ArrayList<Category>();
+	private List<Category> categories = new ArrayList<Category>();
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy="entityPrimary")
 	@JsonManagedReference
 	private List<Metadata> metadata = new ArrayList<Metadata>();
 	@ManyToMany(mappedBy="entityPrimary")
 	@JsonBackReference
-	private List <User> user = new ArrayList<User>();
+	private List <User> users = new ArrayList<User>();
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="entityPrimary", cascade=CascadeType.ALL)
 	@JsonManagedReference
-	private List<Review> review = new ArrayList<Review>();
+	private List<Review> reviews = new ArrayList<Review>();
 	@OneToMany(fetch = FetchType.LAZY, mappedBy="entityPrimary", cascade=CascadeType.ALL)
 	@JsonManagedReference
-	private List<Service> service = new ArrayList<Service>();
+	private List<Service> services = new ArrayList<Service>();
 	
 	public Long getId() {
 		return id;
@@ -67,17 +67,17 @@ public class EntityPrimary {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List<Address> getAddress() {
-		return address;
+	public List<Address> getAddresses() {
+		return addresses;
 	}
-	public void setAddress(List<Address> address) {
-		this.address = address;
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
 	}
-	public List<Category> getCategory() {
-		return category;
+	public List<Category> getCategories() {
+		return categories;
 	}
-	public void setCategory(List<Category> category) {
-		this.category = category;
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
 	}
 	public List<Metadata> getMetadata() {
 		return metadata;
@@ -85,22 +85,23 @@ public class EntityPrimary {
 	public void setMetadata(List<Metadata> metadata) {
 		this.metadata = metadata;
 	}
-	public List<User> getUser() {
-		return user;
+	public List<User> getUsers() {
+		return users;
 	}
-	public void setUser(List<User> user) {
-		this.user = user;
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
-	public List<Review> getReview() {
-		return review;
+	public List<Review> getReviews() {
+		return reviews;
 	}
-	public void setReview(List<Review> review) {
-		this.review = review;
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
-	public List<Service> getService() {
-		return service;
+	public List<Service> getServices() {
+		return services;
 	}
-	public void setService(List<Service> service) {
-		this.service = service;
-	}	
+	public void setServices(List<Service> services) {
+		this.services = services;
+	}
+		
 }

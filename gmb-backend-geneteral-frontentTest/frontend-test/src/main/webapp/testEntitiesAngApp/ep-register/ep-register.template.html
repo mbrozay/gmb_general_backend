@@ -2,8 +2,8 @@
 <strong>Register Page</strong> <br>
 
 <form name="signupForm" ng-submit="$ctrl.submit()">
-First Name: <input ng-repeat="userFN in $ctrl.ep.users track by $index" type='text' ng-model='$ctrl.ep.users[$index].firstName' placeholder='First Name' > <br>
-Last Name:  <input ng-repeat="userLN in $ctrl.ep.users track by $index" type='text' ng-model='$ctrl.ep.users[$index].lastName' placeholder='Last Name'> <br>
+<!-- First Name: <input ng-repeat="userFN in $ctrl.ep.users track by $index" type='text' ng-model='$ctrl.ep.users[$index].firstName' placeholder='First Name' > <br>
+Last Name:  <input ng-repeat="userLN in $ctrl.ep.users track by $index" type='text' ng-model='$ctrl.ep.users[$index].lastName' placeholder='Last Name'> <br> -->
 <!-- Company Name: <input type="text" ng-model="$ctrl.ep.name">
 Company Description: <input type="text" ng-model="$ctrl.ep.description">
 Address Line 1 : <input ng-repeat="addressLine1 in $ctrl.ep.addresses track by $index" type='text' ng-model='$ctrl.ep.addresses[$index].addressLine1' placeholder='Address Line 1' >
@@ -28,12 +28,13 @@ Testimonial 1 - Url : <input type="text" ng-model="$ctrl.ep.testimonials.testimo
 Testimonial 2 - From : <input type="text" ng-model="$ctrl.ep.testimonials.testimonialFromName2"> <br>
 Testimonial 2 - Body : <input type="text" ng-model="$ctrl.ep.testimonials.testimonialBody2"> <br> 
 Testimonial 2 - Url : <input type="text" ng-model="$ctrl.ep.testimonials.testimonialFromURL2"> <br>-->
+First Name:  <input type="text" ng-model="$ctrl.ep.user.firstName">
+Last Name:  <input type="text" ng-model="$ctrl.ep.user.lastName">
 Username:  <input type="text" ng-model="$ctrl.ep.user.username">
 Password:  <input type="text" ng-model="$ctrl.ep.user.password">
    <div> <button type="submit">Sign up</button><br>
        </div>
 </form>
  <strong>Response</strong><br>
- <div ng-repeat="resp in $ctrl.message" >
-{{resp.response}}
+{{$ctrl.resp.sessionToken}}
 </div>

@@ -35,10 +35,10 @@ public class TestInsert {
 		List<Category> categories = new ArrayList<Category>();
 		categories.add(category1);
 		categories.add(category2);
-		entityPrimary.setCategory(categories);
+		entityPrimary.setCategories(categories);
 		address.setEntityPrimary(entityPrimary);
 		session.save(entityPrimary);
-		entityPrimary.getAddress().add(address);
+		entityPrimary.getAddresses().add(address);
 		
 		session.save(address);
 		session.getTransaction().commit();

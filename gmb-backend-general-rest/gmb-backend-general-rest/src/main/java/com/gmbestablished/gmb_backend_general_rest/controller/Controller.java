@@ -18,29 +18,42 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
+import com.gmbestablished.gmb_backend_general_dataAccess.model.User;
 import com.gmbestablished.gmb_backend_general_rest.dao.ContentUpload;
 import com.gmbestablished.gmb_backend_general_rest.dao.EpPicker;
 import com.gmbestablished.gmb_backend_general_rest.dao.LoginValidate;
 import com.gmbestablished.gmb_backend_general_rest.dao.ReturnCategories;
-import com.gmbestablished.gmb_backend_general_rest.dao.returnStringEntityPrimary;
+import com.gmbestablished.gmb_backend_general_rest.dao.UserUpdater;
+import com.gmbestablished.gmb_backend_general_rest.dao.EntityPrimaryList;
 import com.gmbestablished.gmb_backend_general_rest.pojo.EntityPrimaryPojo;
 import com.gmbestablished.gmb_backend_general_rest.pojo.EpPicker_pojo;
 import com.gmbestablished.gmb_backend_general_rest.pojo.LoginPojo;
 import com.gmbestablished.gmb_backend_general_rest.pojo.ResponseMessage;
+import com.gmbestablished.gmb_backend_general_rest.pojo.UserPojo;
 
 @CrossOrigin(origins = "*")
 @RestController
 public class Controller {
 	
 	//GET all entities
-	@CrossOrigin(origins = "*")
+/*	@CrossOrigin(origins = "*")
 	@RequestMapping("/entitySelector")
 	public String allEntityPrimaries() throws JsonProcessingException{
-		returnStringEntityPrimary rsep =new returnStringEntityPrimary();
-		String stringRsep = rsep.EntityPrimaryList();
+		ListEntityPrimary listEntityPrimary =new ListEntityPrimary();
+		String stringRsep = listEntityPrimary.EntityPrimaryList();
 		
 		return stringRsep;
 		
+	}*/
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/entitySelector", method = RequestMethod.POST)	
+	public  @ResponseBody String epSelector_JSON( @RequestBody UserPojo userpojo ) throws JsonProcessingException   {		
+		
+		EntityPrimaryList entityPrimaryList =new EntityPrimaryList();
+		String entityList = entityPrimaryList.EntityPrimaryListJson(userpojo);
+		
+		return entityList;
 	}
 	
 	//GET list of categories
@@ -91,30 +104,30 @@ public class Controller {
 	
 	//Signing up and editing user details
 	@CrossOrigin(origins = "*")
-	@RequestMapping(value = "/epUsers", method = RequestMethod.POST)
-	public @ResponseBody String signup_JSON ( @RequestBody EntityPrimaryPojo entityPrimaryPojo) throws JsonProcessingException{
+	@RequestMapping(value = "/users", method = RequestMethod.POST)
+	public @ResponseBody String users_JSON ( @RequestBody UserPojo userPojo) throws JsonProcessingException{
 
-		ContentUpload contentUpload = new ContentUpload();
-		String result = contentUpload.ContentUploadSave(entityPrimaryPojo);
-		List<ResponseMessage> responseMessages = new ArrayList<ResponseMessage>();
-		ResponseMessage responseMessage = new ResponseMessage();
-		responseMessages.add(responseMessage);
-		responseMessage.setResponse("Success");
+		UserUpdater userUpdater = new UserUpdater();
+		String result = userUpdater.userUpdate(userPojo);
+		userPojo.setSessionToken(result);
+		userPojo.setPassword(null);
+		
 		ObjectMapper mapper = new ObjectMapper();
-		String jsonInString = mapper.writeValueAsString(responseMessages);
+		String jsonInString = mapper.writeValueAsString(userPojo);
+		
 		return jsonInString;
 	}
 	
 	//Login, generate session token
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/epLogin", method = RequestMethod.POST)
-	public @ResponseBody String login_JSON ( @RequestBody LoginPojo loginPojo) throws JsonProcessingException{
+	public @ResponseBody String login_JSON ( @RequestBody UserPojo userPojo) throws JsonProcessingException{
 		LoginValidate loginValidate = new LoginValidate();
-		String result = loginValidate.LoginCheckCreds(loginPojo);
-		loginPojo.setSessionToken(result);
+		String result = loginValidate.LoginCheckCreds(userPojo);
+		userPojo.setSessionToken(result);
 		
 		ObjectMapper mapper = new ObjectMapper();
-		String jsonInString = mapper.writeValueAsString(loginPojo);
+		String jsonInString = mapper.writeValueAsString(userPojo);
 		
 		return jsonInString;
 	}

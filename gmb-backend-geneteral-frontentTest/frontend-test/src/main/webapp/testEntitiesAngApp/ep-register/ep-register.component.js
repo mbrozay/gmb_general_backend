@@ -1,7 +1,7 @@
 'use strict';
 
 // Register `phoneDetail` component, along with its associated controller and template
-angular.
+/*angular.
   module('epRegister').
   component('epRegister', {
     templateUrl: 'ep-register/ep-register.template.html',
@@ -31,7 +31,7 @@ angular.
 
     			var jsondataStringify1 = JSON.stringify(ctrl.ep);
     	
-    			/*ctrl.serivceArray = [];
+    			ctrl.serivceArray = [];
     	ctrl.serivceArray.push({"serviceBlockTitle" : ctrl.services.serviceBlockTitle1,
 		"serviceBlockBody" : ctrl.services.serviceBlockBody1});    	
     	ctrl.serivceArray.push({"serviceBlockTitle" : ctrl.services.serviceBlockTitle2,
@@ -49,9 +49,9 @@ angular.
     		"testimonialFromName" : ctrl.testimonials.testimonialFromName2,
 			"testimonialBody" : ctrl.testimonials.testimonialBody2, 
 			"testimonialFromURL" : ctrl.testimonials.testimonialFromURL2
-			});*/
+			});
     	
-    	/*ctrl.userArray = [];
+    	ctrl.userArray = [];
     	ctrl.userArray.push({
     		"firstName" : ctrl.user.firstName,
     		"lastName" : ctrl.user.lastName,
@@ -83,7 +83,7 @@ angular.
     			"services" 	: ctrl.serivceArray,
     			"testimonials" : ctrl.testimonialArray
    			
-    	};*/
+    	};
     	var jsondataStringify = JSON.stringify(jsondataStringify1);
     	EpRegister.save(jsondataStringify1,function(data){
     		ctrl.message = data;
@@ -94,4 +94,29 @@ angular.
     }           
     }]
     	
-  });
+  });*/
+
+angular.
+module('epRegister').
+component('epRegister', {
+  templateUrl: 'ep-register/ep-register.template.html',
+  
+  controller: ['EpUser','$cookies', '$location',
+               function registerListController(EpUser,$cookies, $location){	
+  var ctrl = this;
+
+  ctrl.submit = function(){
+	  var jsondataStringify = JSON.stringify(ctrl.ep.user);
+	  EpUser.save(jsondataStringify,function(data){
+  		ctrl.resp = data;
+		$cookies.put('auth',ctrl.resp.sessionToken);
+        $location.path('/listbyuser');
+  	}, function(error) {
+  	    ctrl.errorMessage = "error";
+  	
+  })
+  }
+  			 
+  }]
+  	
+});

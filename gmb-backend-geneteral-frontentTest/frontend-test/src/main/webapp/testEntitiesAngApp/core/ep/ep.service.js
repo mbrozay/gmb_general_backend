@@ -16,6 +16,22 @@ angular.
 
 angular.
 module('core.ep').
+factory('EpList', ['$resource','$http',
+  function($resource,$http) {
+	var response = $resource('http://localhost:8080/gmb-backend-general-rest/entitySelector', {}, {
+        save: {
+          method: 'POST',
+          accept: "application/json",
+          contentType: "application/json",
+          isArray: true
+        }	
+	})  
+	return response;
+	}
+]);
+
+angular.
+module('core.ep').
 factory('EpCategories', ['$resource','$http',
   function($resource,$http) {
     
@@ -83,6 +99,22 @@ module('core.ep').
 factory('EpByUser', ['$resource','$http',
   function($resource,$http) {
 	var response = $resource('http://localhost:8080/gmb-backend-general-rest/epByUser', {}, {
+        save: {
+          method: 'POST',
+          accept: "application/json",
+          contentType: "application/json",
+          isArray: false
+        }	
+	})  
+	return response;
+	}
+]);
+
+angular.
+module('core.ep').
+factory('EpUser', ['$resource','$http',
+  function($resource,$http) {
+	var response = $resource('http://localhost:8080/gmb-backend-general-rest/users', {}, {
         save: {
           method: 'POST',
           accept: "application/json",

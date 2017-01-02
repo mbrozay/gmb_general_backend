@@ -9,6 +9,7 @@ import org.hibernate.Session;
 import com.gmbestablished.gmb_backend_general_dataAccess.model.User;
 import com.gmbestablished.gmb_backend_general_dataAccess.model.SessionToken;
 import com.gmbestablished.gmb_backend_general_rest.pojo.LoginPojo;
+import com.gmbestablished.gmb_backend_general_rest.pojo.UserPojo;
 import com.gmbestablished.gmb_backend_general_dataAccess.util.HibernateUtil;
 
 public class LoginValidate {
@@ -18,14 +19,14 @@ public class LoginValidate {
 	
 	static ArrayList<User> users;
 	
-	public String LoginCheckCreds (LoginPojo loginPojo){
+	public String LoginCheckCreds (UserPojo userPojo){
 		
 		Session session = null;
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
 		session.beginTransaction();
 		
-		String username = loginPojo.getUsername();
-		String password = loginPojo.getPassword();
+		String username = userPojo.getUsername();
+		String password = userPojo.getPassword();
 		
 		String hql = "from User where username = :username and password = :password";
 		Query query = session.createQuery(hql);

@@ -19,12 +19,12 @@
         </select>
       </p>
         <div ng-repeat="ep in $ctrl.eps | filter:$ctrl.query | filter:myFilter   |  orderBy:$ctrl.orderProp" >
-             <div><strong>{{ep.name}} </strong> <br></div>
-          <div ng-repeat="addr in ep.address " >
+             <div><strong><a href="#!/eps/{{ep.id}}">{{ep.name}}</a> </strong> <br></div>
+          <div ng-repeat="addr in ep.addresses " >
         {{addr.addressLine1}}</br>
           {{addr.addressLine2}}</br>
            {{addr.city}}</br><br>
-           <div ng-repeat="cat in ep.category " >
+           <div ng-repeat="cat in ep.categories " >
         {{cat.name}}</br>
         <div ng-repeat="md in ep.metadata | filter:{id: 1}:true " >
         <a href="#!/eps/{{ep.id}}" class = "thumbnail">

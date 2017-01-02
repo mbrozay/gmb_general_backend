@@ -8,5 +8,6 @@ angular.module('gmbcatApp', [
   'epList',
   'epRegister',
   'epLogin',
-  'epEdit'
+  'epEdit',
+  'epListbylogin'
 ]);

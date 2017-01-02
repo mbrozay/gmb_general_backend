@@ -3,16 +3,18 @@ package com.gmbestablished.gmb_backend_general_rest.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import com.gmbestablished.gmb_backend_general_dataAccess.model.Address;
-import com.gmbestablished.gmb_backend_general_dataAccess.model.EntityPrimary;
 import com.gmbestablished.gmb_backend_general_dataAccess.model.Metadata;
 import com.gmbestablished.gmb_backend_general_dataAccess.model.Metadatatype;
+import com.gmbestablished.gmb_backend_general_dataAccess.model.SessionToken;
 import com.gmbestablished.gmb_backend_general_dataAccess.model.User;
 import com.gmbestablished.gmb_backend_general_dataAccess.util.HibernateUtil;
 import com.gmbestablished.gmb_backend_general_rest.pojo.EntityPrimaryPojo;
 import com.gmbestablished.gmb_backend_general_dataAccess.model.Category;
+import com.gmbestablished.gmb_backend_general_dataAccess.model.EntityPrimary;
 
 public class ContentUpload {
 
@@ -37,7 +39,7 @@ public class ContentUpload {
 		address.setLongitudeCoordinate(entityPrimaryPojo.getAddresses().get(0).getLongitudeCoordinate());
 		address.setEntityPrimary(entityPrimary);	
 		
-		User user = new User();
+		/*User user = new User();
 		if (entityPrimaryPojo.getUsers().get(0).getId() !=null){
 			user.setId(entityPrimaryPojo.getUsers().get(0).getId());
 		}
@@ -47,12 +49,23 @@ public class ContentUpload {
 		user.setPassword(entityPrimaryPojo.getUsers().get(0).getPassword());
 		session.saveOrUpdate(user);
 		List<User> users = new ArrayList<User>();
-		users.add(user);
+		users.add(user);*/
 		
+		String sessionToken = entityPrimaryPojo.getSessionToken();
+		String sessionHql = "from SessionToken where sessionToken = :sessionToken";
+		//	String sessionToken = epPicker_pojo.getSessionToken();
+			Query sessionQuery = session.createQuery(sessionHql);
+			sessionQuery.setParameter("sessionToken", sessionToken);
+			List<SessionToken> sessionTokens = (ArrayList<SessionToken> )sessionQuery.list();
+		
+			User user = sessionTokens.get(0).getUser();
+			List<User> users = new ArrayList<User>();
+			users.add(user);
+			
 		if (entityPrimaryPojo.getId() != null){
 			entityPrimary.setId(entityPrimaryPojo.getId());
 		}
-		entityPrimary.setUser(users);
+//		entityPrimary.setUser(users);
 		entityPrimary.setName(entityPrimaryPojo.getName());
 		entityPrimary.setDescription(entityPrimaryPojo.getDescription());
 		
@@ -60,9 +73,9 @@ public class ContentUpload {
 		Category category = (Category) session.get(Category.class, categoryId);
 		List<Category> categories = new ArrayList<Category>();
 		categories.add(category);
-		entityPrimary.setCategory(categories);
+		entityPrimary.setCategories(categories);
 		
-		List<Metadata> metadatas = new ArrayList<Metadata>();
+/*		List<Metadata> metadatas = new ArrayList<Metadata>();
 		//About Us
 		Metadata aboutUsMetadata = new Metadata();
 		Metadatatype aboutUsMetadatatype = (Metadatatype) session.get(Metadatatype.class, (long) 2);
@@ -155,13 +168,13 @@ public class ContentUpload {
 		testimonialBody2Metadata.setMetaDataTypeId(testimonialBody2MetadataType);
 		testimonialBody2Metadata.setMetaDataValue(entityPrimaryPojo.getTestimonials().get(1).getTestimonialBody());
 		session.saveOrUpdate(testimonialBody2Metadata);
-		metadatas.add(testimonialBody2Metadata);
+		metadatas.add(testimonialBody2Metadata);*/
 		
-		entityPrimary.setMetadata(metadatas);
+//		entityPrimary.setMetadata(metadatas);
 		session.saveOrUpdate(entityPrimary);
-		entityPrimary.getAddress().add(address);
+		entityPrimary.getAddresses().add(address);
 		user.getEntityPrimary().add(entityPrimary);	
-		aboutUsMetadata.getEntityPrimary().add(entityPrimary);
+/*		aboutUsMetadata.getEntityPrimary().add(entityPrimary);
 		service1TitleMetadata.getEntityPrimary().add(entityPrimary);
 		service1BodyMetadata.getEntityPrimary().add(entityPrimary);
 		service2TitleMetadata.getEntityPrimary().add(entityPrimary);
@@ -173,7 +186,7 @@ public class ContentUpload {
 		testimonialBody1Metadata.getEntityPrimary().add(entityPrimary);
 		testimonialFromName2Metadata.getEntityPrimary().add(entityPrimary);
 		testimonialFromWebSite2Metadata.getEntityPrimary().add(entityPrimary);
-		testimonialBody2Metadata.getEntityPrimary().add(entityPrimary);
+		testimonialBody2Metadata.getEntityPrimary().add(entityPrimary);*/
 		session.saveOrUpdate(address);
 		session.getTransaction().commit();
 		

@@ -24,7 +24,7 @@ public class Category {
 	private Long id;
 	private String name;
 	private String description;
-	@ManyToMany(mappedBy="category")
+	@ManyToMany(mappedBy="categories")
 	@JsonBackReference
 	private List<EntityPrimary> entityPrimary = new ArrayList<EntityPrimary>();
 	public Long getId() {

@@ -5,18 +5,21 @@ angular.
   module('epList').
   component('epList' ,{
 	  templateUrl: 'ep-list/ep-list.template.html',
-/*	controller: ['$http',function EPListController($http) {
-		 var self = this;
-		 self.orderProp = 'id';
-	        $http.get('http://localhost:8080/gmb-backend-general-rest/entitySelector').then(function(response) {
-	 		   self.eps = response.data;
-			 });
-	   }]*/
 	  
-	  controller: ['EpAll',
-	               function EPListController(EpAll) {
-		  this.eps = EpAll.query();
-		  this.orderProp = 'age';
+	  controller: ['EpList',
+	               function EPListController(EpList) {
+		  var ctrl = this;
+		  var jsondataStringify = {
+					"sessionToken" : null,
+			};
+		  
+		  EpList.save(jsondataStringify,function(data){
+				ctrl.eps = data;	     		
+			}, function(error) {
+				ctrl.message = "error";
+			})
+		/*  this.eps = EpAll.query();
+		  this.orderProp = 'age';*/
 
 	  }
 	  
