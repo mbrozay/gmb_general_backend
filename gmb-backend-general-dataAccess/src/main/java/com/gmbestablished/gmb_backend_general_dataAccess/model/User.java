@@ -26,6 +26,7 @@ public class User {
 	private String lastName;
 	private String username;
 	private String password;
+	private String email;
 	@ManyToMany
 	@JoinTable(name = "entityprimary_user_association", joinColumns = {
 	@JoinColumn(name = "userId") },
@@ -62,6 +63,12 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public List<EntityPrimary> getEntityPrimary() {
 		return entityPrimary;

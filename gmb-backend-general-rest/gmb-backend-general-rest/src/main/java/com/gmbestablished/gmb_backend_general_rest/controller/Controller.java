@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -122,6 +125,7 @@ public class Controller {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/epLogin", method = RequestMethod.POST)
 	public @ResponseBody String login_JSON ( @RequestBody UserPojo userPojo) throws JsonProcessingException{
+		userPojo.setjWT(false);
 		LoginValidate loginValidate = new LoginValidate();
 		String result = loginValidate.LoginCheckCreds(userPojo);
 		userPojo.setSessionToken(result);
@@ -132,6 +136,43 @@ public class Controller {
 		return jsonInString;
 	}
 	
+	//Login returning JWT Token
+	@CrossOrigin(origins = "*")
+	@RequestMapping(value = "/loginJWT", method = RequestMethod.POST)
+	public @ResponseBody String loginJWT (@RequestBody UserPojo userPojo) throws JsonProcessingException {
+		userPojo.setjWT(true);
+		LoginValidate loginValidate = new LoginValidate();
+		String result = loginValidate.LoginCheckCreds(userPojo);
+		
+		String jsonInString = null;
+		if (result != null && !result.isEmpty())
+		{
+		userPojo.setSessionToken(result);
+		
+
+		String jWTToken = null;
+		try {
+		    Algorithm algorithm = Algorithm.HMAC256("password1");
+		    jWTToken = JWT.create()
+		        .withIssuer("auth0")
+		        .withClaim("email", userPojo.getEmail())
+		        .sign(algorithm);
+		} catch (JWTCreationException exception){
+		    //Invalid Signing configuration / Couldn't convert Claims.
+		}
+		
+		System.out.println(jWTToken);
+		userPojo.setToken(jWTToken);
+		ObjectMapper mapper = new ObjectMapper();
+		jsonInString = mapper.writeValueAsString(userPojo);
+		System.out.println(jsonInString);
+
+	//	return jWTToken;
+	}
+		 
+			
+		return jsonInString;
+	}
 /*	@CrossOrigin(origins = "*")
 	@RequestMapping(value = "/epByUser", method = RequestMethod.POST)
 	public @ResponseBody String epByUser_JSON ( @RequestBody EntityPrimaryPojo entityPrimaryPojo) throws JsonProcessingException{

@@ -7,7 +7,10 @@ public class UserPojo {
 	private String lastName;
 	private String username;
 	private String password;
+	private String email;
 	private String sessionToken;
+	private String token;
+	private Boolean jWT;
 	public Long getId() {
 		return id;
 	}
@@ -37,6 +40,12 @@ public class UserPojo {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getSessionToken() {
 		return sessionToken;
@@ -44,4 +53,17 @@ public class UserPojo {
 	public void setSessionToken(String sessionToken) {
 		this.sessionToken = sessionToken;
 	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+	public Boolean getjWT() {
+		return jWT;
+	}
+	public void setjWT(Boolean jWT) {
+		this.jWT = jWT;
+	}
+	
 }
